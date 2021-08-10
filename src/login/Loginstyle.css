@@ -1,0 +1,29 @@
+.flexbox-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20;
+  margin-right: 20;
+  padding: 20;
+}
+.column-container {
+  flex: 1;
+  background-color: beige;
+  width: 50%;
+}
+.column2-container {
+  background-color: rgb(214, 214, 178);
+  width: 50%;
+  flex: 1;
+}
+.form-container {
+  border: 5;
+  border-width: 1;
+  border-color: darkgrey;
+  padding: 10;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+}

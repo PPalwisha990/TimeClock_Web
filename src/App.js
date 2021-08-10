@@ -1,25 +1,11 @@
 import "./App.css";
-import {
-  PasswordInput,
-  SearchInput,
-  Textarea,
-  TextInput,
-} from "./componnets/TextInput";
+import Routing from "./routes/Routing";
 
 const App = () => {
-  const name = "Joseph";
   return (
-    <div className="App" style={{ padding: "20px" }}>
-      <h1>Hello, {name}</h1>
-      <TextInput
-        placeholder={"organization code"}
-        suffix={".co"}
-        prefix={"http:\\"}
-      />
-
-      <PasswordInput />
-      <Textarea />
-      <SearchInput />
+    <div className="App">
+      <h1>Application</h1>
+      <Routing />
     </div>
   );
 };
