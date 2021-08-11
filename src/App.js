@@ -3,8 +3,7 @@ import Routing from "./routes/Routing";
 
 const App = () => {
   return (
-    <div className="App">
-      <h1>Application</h1>
+    <div style={{ height: "100%" }}>
       <Routing />
     </div>
   );
