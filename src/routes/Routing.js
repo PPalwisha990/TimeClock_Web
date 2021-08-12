@@ -4,7 +4,7 @@ import AuthProvider from "../context/AuthProvider";
 import Routes from "./Routes";
 
 const Routing = () => {
-  const [user, setUserState] = useState(false);
+  const [user, setUserState] = useState(true);
 
   const initilize = () => {
     let user = true;

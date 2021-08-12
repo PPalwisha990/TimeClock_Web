@@ -8,6 +8,11 @@ import "./Loginstyle.css";
 const Login = () => {
   let history = useHistory();
 
+  const onPress = () => {
+    console.log("button");
+    history.push("/home");
+  };
+
   return (
     <div className="backgroundImage-container">
       <div>
@@ -26,7 +31,7 @@ const Login = () => {
             label={"Domain:"}
           />
           <div className="button">
-            <Button title={"Enter"} />
+            <Button title={"Enter"} onPressButton={onPress} />
           </div>
         </div>
       </div>
