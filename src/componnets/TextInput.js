@@ -1,6 +1,6 @@
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Input } from "antd";
-import { Theme } from "../theme/Theme";
+import "./TextInput.css";
 
 export const TextInput = ({
   defaultValue,
@@ -9,25 +9,33 @@ export const TextInput = ({
   placeholder,
   suffix,
   prefix,
+  label,
 }) => {
   return (
-    <Input
-      placeholder={placeholder}
-      style={inputStyle}
-      defaultValue={defaultValue}
-      value={value}
-      suffix={suffix}
-      prefix={prefix}
-      onChange={onChange}
-    />
+    <div className="input-container">
+      <div className="input-label-container">
+        <label className="input-label">{label}</label>
+      </div>
+      <div className="input-text-container">
+        <Input
+          className="inputStyle"
+          placeholder={placeholder}
+          defaultValue={defaultValue}
+          value={value}
+          suffix={suffix}
+          prefix={prefix}
+          onChange={onChange}
+        />
+      </div>
+    </div>
   );
 };
 
 export const PasswordInput = ({ placeholder, onChange, value }) => {
   return (
     <Input.Password
+      className="inputStyle"
       placeholder={placeholder}
-      style={inputStyle}
       onChange={onChange}
       value={value}
       iconRender={(visible) =>
@@ -39,9 +47,9 @@ export const PasswordInput = ({ placeholder, onChange, value }) => {
 export const Textarea = ({ placeholder, onChange, value }) => {
   return (
     <Input.TextArea
+      className="textareaStyle"
       placeholder={placeholder}
       value={value}
-      style={textareaStyle}
       onChange={onChange}
     />
   );
@@ -49,28 +57,11 @@ export const Textarea = ({ placeholder, onChange, value }) => {
 export const SearchInput = ({ placeholder, onChange, loading, onSearch }) => {
   return (
     <Input.Search
+      className="textareaStyle"
       placeholder={placeholder}
-      style={textareaStyle}
       onChange={onChange}
       loading={loading}
       onSearch={onSearch}
     />
   );
-};
-
-const inputStyle = {
-  borderTopWidth: 0,
-  borderLeft: 0,
-  borderRight: 0,
-  borderBottomColor: Theme.primaryBorder,
-  color: Theme.primaryText,
-  padding: 5,
-  marginTop: 10,
-};
-
-const textareaStyle = {
-  color: Theme.primaryText,
-  padding: 5,
-  marginTop: 10,
-  borderRadius: 3,
 };

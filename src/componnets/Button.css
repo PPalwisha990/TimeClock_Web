@@ -1,0 +1,13 @@
+.button-container {
+  width: 40%;
+  border-radius: 5px;
+}
+.button-style {
+  width: 100%;
+  padding: 4px;
+  background-color: #2b81c7;
+  border-width: 0px;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 500;
+}
