@@ -31,17 +31,24 @@ export const TextInput = ({
   );
 };
 
-export const PasswordInput = ({ placeholder, onChange, value }) => {
+export const PasswordInput = ({ placeholder, onChange, value, label }) => {
   return (
-    <Input.Password
-      className="inputStyle"
-      placeholder={placeholder}
-      onChange={onChange}
-      value={value}
-      iconRender={(visible) =>
-        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-      }
-    />
+    <div className="input-container">
+      <div className="input-label-container">
+        <label className="input-label">{label}</label>
+      </div>
+      <div className="input-text-container">
+        <Input.Password
+          className="inputStyle"
+          placeholder={placeholder}
+          onChange={onChange}
+          value={value}
+          iconRender={(visible) =>
+            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+          }
+        />
+      </div>
+    </div>
   );
 };
 export const Textarea = ({ placeholder, onChange, value }) => {

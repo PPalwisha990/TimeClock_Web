@@ -1,13 +1,23 @@
 .button-container {
-  width: 40%;
+  width: 150px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: #0c64ae;
+  justify-content: center;
+  padding: 5px;
 }
 .button-style {
-  width: 100%;
-  padding: 4px;
-  background-color: #2b81c7;
+  background-color: #0c64ae;
   border-width: 0px;
   border-radius: 3px;
   color: #fff;
-  font-weight: 500;
+  font-weight: 300;
+  font-size: 18px;
+  padding-left: 10px;
+}
+.icon-style {
+  font-size: 18px;
+  color: #fff;
 }

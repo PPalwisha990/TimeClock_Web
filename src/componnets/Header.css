@@ -1,0 +1,21 @@
+.header-container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: chocolate;
+  padding: 5px;
+  border-bottom-color: #e3e3e3;
+  border-bottom-width: 1px;
+}
+.logo-header {
+  height: 60px;
+}
+.left-button {
+  background-color: #0c64ae;
+  align-self: center;
+}
+/* .button-container {
+  justify-content: center;
+  align-items: center;
+} */
