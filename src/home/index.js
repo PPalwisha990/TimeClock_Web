@@ -1,13 +1,32 @@
-import { useHistory } from "react-router";
-import { Header } from "../componnets/Header";
+import { MainHeader } from "../componnets/MainHeader";
+import TimeClock from "./TimeClock";
 
 const Home = () => {
-  let history = useHistory();
+  const renderContent = () => {
+    // if (settings?.showEmployees && selectedEmployeeId === 0) {
+    //   return <EmployeesList onEmployeeSelect={onEmployeeSelect} />;
+    // } else {
+    return (
+      <TimeClock
+      // onValidate={onValidate}
+      // showSuccessMessage={showSuccessMessage}
+      // sucessMessageParams={successParams}
+      // selectedEmployeeId={selectedEmployeeId}
+      // showDashboard={settings?.showTimesheetData}
+      // onSyncInfoPress={onSyncInfoPress}
+      // selectedEmployeeName={selectedEmployeeName}
+      // kioskType={settings.kioskUserType}
+      // location={location}
+      />
+    );
+    //}
+  };
 
   return (
-    <div>
-      <Header />
-    </div>
+    <container>
+      <MainHeader />
+      <TimeClock />
+    </container>
   );
 };
 export default Home;

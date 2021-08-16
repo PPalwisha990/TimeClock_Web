@@ -3,19 +3,29 @@
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  background-color: chocolate;
   padding: 5px;
+  border-bottom-width: thin;
   border-bottom-color: #e3e3e3;
-  border-bottom-width: 1px;
+  padding-left: 1%;
+  padding-right: 1%;
+  height: 80px;
 }
 .logo-header {
   height: 60px;
+  padding-top: 5%;
 }
-.left-button {
-  background-color: #0c64ae;
+.header-right-button {
   align-self: center;
+  display: flex;
+  flex-direction: row;
 }
-/* .button-container {
-  justify-content: center;
-  align-items: center;
-} */
+.header-left-button {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-style {
+  background-color: #4b94cf;
+  border-color: #4b94cf;
+}

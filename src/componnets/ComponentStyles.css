@@ -1,0 +1,52 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.button-container {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.buttonPalwisha {
+  width: 70px;
+  height: 70px;
+  /* border-radius: 70px;
+  border-width: 1px;
+  border-color: "#D3D3D3"; */
+  border: 1px solid;
+
+  justify-content: center;
+  align-items: center;
+}
+.button-text {
+  color: "#3E3E3E";
+  font-size: 22px;
+}
+.input-container {
+  flex: 1px;
+  background-color: "#F7F7FA";
+  border-color: "#EEEEEE";
+  border-width: 1px;
+  border-radius: 5px;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.input-text {
+  color: "#A9A9A9";
+  font-size: 20;
+}
+.timeclock-main {
+  display: flex;
+  flex: 1;
+}
+.numpaid-container {
+  flex: 1px;
+  justify-content: center;
+  align-items: center;
+}

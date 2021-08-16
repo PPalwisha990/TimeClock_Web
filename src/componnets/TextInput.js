@@ -1,6 +1,42 @@
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Input } from "antd";
-import "./TextInput.css";
+import { createUseStyles } from "react-jss";
+
+const useStyles = createUseStyles({
+  inputContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    flex: 1,
+    padding: 5,
+  },
+  labelContainer: {
+    paddingTop: 10,
+  },
+  inputLabel: {
+    color: "#3f3d56",
+  },
+  textContainer: {
+    paddingLeft: 10,
+    width: "100%",
+  },
+  inputStyle: {
+    borderTopWidth: 0,
+    borderLeft: 0,
+    borderRight: 0,
+    borderBottomColor: "#e3e3e3",
+    color: "#3f3d56",
+    padding: 5,
+    backgroundColor: "transparent",
+  },
+  textareaStyle: {
+    color: "#3f3d56",
+    padding: 5,
+    marginTop: 10,
+    borderRadius: 3,
+  },
+});
 
 export const TextInput = ({
   defaultValue,
@@ -11,14 +47,15 @@ export const TextInput = ({
   prefix,
   label,
 }) => {
+  const classes = useStyles();
   return (
-    <div className="input-container">
-      <div className="input-label-container">
-        <label className="input-label">{label}</label>
+    <div className={classes.inputContainer}>
+      <div className={classes.labelContainer}>
+        <label className={classes.inputLabel}>{label}</label>
       </div>
-      <div className="input-text-container">
+      <div className={classes.textContainer}>
         <Input
-          className="inputStyle"
+          className={classes.inputStyle}
           placeholder={placeholder}
           defaultValue={defaultValue}
           value={value}
@@ -32,14 +69,15 @@ export const TextInput = ({
 };
 
 export const PasswordInput = ({ placeholder, onChange, value, label }) => {
+  const classes = useStyles();
   return (
-    <div className="input-container">
-      <div className="input-label-container">
-        <label className="input-label">{label}</label>
+    <div className={classes.inputContainer}>
+      <div className={classes.labelContainer}>
+        <label className={classes.inputLabel}>{label}</label>
       </div>
-      <div className="input-text-container">
+      <div className={classes.textContainer}>
         <Input.Password
-          className="inputStyle"
+          className={classes.inputStyle}
           placeholder={placeholder}
           onChange={onChange}
           value={value}
@@ -51,20 +89,29 @@ export const PasswordInput = ({ placeholder, onChange, value, label }) => {
     </div>
   );
 };
-export const Textarea = ({ placeholder, onChange, value }) => {
+export const Textarea = ({ placeholder, onChange, value, label }) => {
+  const classes = useStyles();
   return (
-    <Input.TextArea
-      className="textareaStyle"
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-    />
+    <div className={classes.inputContainer}>
+      <div className={classes.labelContainer}>
+        <label className={classes.inputLabel}>{label}</label>
+      </div>
+      <div className={classes.textContainer}>
+        <Input.TextArea
+          className={classes.textareaStyle}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+      </div>
+    </div>
   );
 };
 export const SearchInput = ({ placeholder, onChange, loading, onSearch }) => {
+  const classes = useStyles();
   return (
     <Input.Search
-      className="textareaStyle"
+      className={classes.textareaStyle}
       placeholder={placeholder}
       onChange={onChange}
       loading={loading}
