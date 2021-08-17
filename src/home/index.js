@@ -23,10 +23,10 @@ const Home = () => {
   };
 
   return (
-    <container>
+    <div>
       <MainHeader />
       <TimeClock />
-    </container>
+    </div>
   );
 };
 export default Home;

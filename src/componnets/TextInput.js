@@ -46,6 +46,8 @@ export const TextInput = ({
   suffix,
   prefix,
   label,
+  style,
+  autoFocus,
 }) => {
   const classes = useStyles();
   return (
@@ -55,13 +57,14 @@ export const TextInput = ({
       </div>
       <div className={classes.textContainer}>
         <Input
-          className={classes.inputStyle}
+          className={style ? style : classes.inputStyle}
           placeholder={placeholder}
           defaultValue={defaultValue}
           value={value}
           suffix={suffix}
           prefix={prefix}
           onChange={onChange}
+          autoFocus={autoFocus}
         />
       </div>
     </div>

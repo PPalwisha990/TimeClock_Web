@@ -1,4 +1,5 @@
 import { Route, Switch } from "react-router-dom";
+import Attendance from "../attendance/Attendance";
 import Home from "../home";
 import Login from "../login";
 import ProtectedRoute from "./ProtectedRoute";
@@ -7,8 +8,8 @@ const Routes = () => {
   return (
     <Switch>
       <Route path="/login" component={Login} />
-      <ProtectedRoute path="/" component={Home} />
-      <Route path="/home" component={Home} />
+      <ProtectedRoute path="/home" component={Home} />
+      <Route path="/attendance" component={Attendance} />
     </Switch>
   );
 };

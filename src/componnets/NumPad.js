@@ -1,42 +1,49 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createUseStyles } from "react-jss";
 import { colors } from "../theme/Theme";
-import "./ComponentStyles.css";
+import { TextInput } from "./TextInput";
 
 const useStyle = createUseStyles({
-  row: {
+  inputRow: {
     display: "flex",
     flexDirection: "row",
   },
+  row: {
+    display: "flex",
+    flexDirection: "row",
+    marginLeft: 20,
+  },
   buttonContainer: {
-    margiLeft: 15,
-    marginRight: 15,
-    marginTop: 5,
-    marginBottom: 5,
+    margiLeft: 30,
+    marginRight: 30,
+    marginTop: 10,
+    marginBottom: 10,
   },
   button: {
     width: 70,
     height: 70,
+    borderRadius: 70,
     justifyContent: "center",
     alignItems: "center",
+    border: "solid 1px #D3D3D3",
+    display: "flex",
+    "&:hover": {
+      backgroundColor: "rgba(238, 238, 238, 0.8)",
+      opacity: 0.2,
+      cursor: "pointer",
+    },
   },
   buttonText: {
     color: "#3E3E3E",
     fontSize: 22,
   },
   inputContainer: {
-    flex: 1,
-    backgroundColor: "#F7F7FA",
-    borderColor: "#EEEEEE",
-    borderWidth: 1,
-    borderRadius: 5,
     justifyContent: "center",
     paddingTop: 10,
     paddingBottom: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
     marginTop: 20,
     marginBottom: 20,
+    width: 310,
   },
   inputText: {
     color: "#A9A9A9",
@@ -46,10 +53,19 @@ const useStyle = createUseStyles({
     display: "flex",
     flex: 1,
   },
-  numpaidContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  inputStyle: {
+    color: "#3f3d56",
+    backgroundColor: "#F7F7FA",
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderRadius: 5,
+    borderColor: "#EEEEEE",
+    "&:focus": {
+      outline: "none",
+    },
+    "&:hover": {
+      outline: "none",
+    },
   },
 });
 
@@ -57,7 +73,12 @@ const NumPadInput = ({ text }) => {
   const classes = useStyle();
   return (
     <div className={classes.inputContainer}>
-      <text className={classes.inputText}>{text}</text>
+      <TextInput
+        placeholder={"Enter Access Code"}
+        style={classes.inputStyle}
+        autoFocus={true}
+        //onChange={}
+      />
     </div>
   );
 };
@@ -67,7 +88,7 @@ const NumberButton = ({ number, onPress }) => {
   return (
     <div className={classes.buttonContainer} onClick={() => onPress}>
       <div className={classes.button}>
-        <text className={classes.buttonText}>{number}</text>
+        <span className={classes.buttonText}>{number}</span>
       </div>
     </div>
   );
@@ -84,7 +105,7 @@ const IconButton = ({
   return (
     <div
       className={classes.buttonContainer}
-      onPress={onPress}
+      onClick={onPress}
       disabled={disabled}
     >
       <div
@@ -94,7 +115,7 @@ const IconButton = ({
           backgroundColor,
         }}
       >
-        <FontAwesomeIcon icon={["fal", icon]} size={24} color={iconColor} />
+        <FontAwesomeIcon icon={["fal", icon]} color={iconColor} size="lg" />
       </div>
     </div>
   );
@@ -146,7 +167,7 @@ const NumPad = ({ onSubmit, accessCode, onAccessCodeChange, onClear }) => {
         />
       </div>
 
-      <div className={classes.row}>
+      <div className={classes.inputRow}>
         <NumPadInput
           text={
             accessCode != ""

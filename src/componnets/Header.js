@@ -14,18 +14,23 @@ const useStyle = createUseStyles({
     height: 80,
     width: "100%",
     flexDirection: "row",
-    borderBottomColor: "#EEEEEE",
-    borderBottomWidth: 1,
-    paddingHorizontal: 20,
+    border: "solid 1px #EEEEEE",
+    paddingLeft: 20,
+    paddingRight: 20,
     backgroundColor: "#FFFFFF",
+    display: "flex",
+    alignItems: "center",
   },
   left: {
     flexDirection: "row",
     alignItems: "center",
+    display: "flex",
   },
   center: {
-    flex: 1,
+    display: "flex",
     justifyContent: "center",
+    paddingLeft: 10,
+    paddingBottom: 3,
   },
   right: {
     flex: 1,
@@ -43,13 +48,17 @@ const Header = ({ onBackPress, title, showBack, showRight, onRightPress }) => {
         {showBack ? <BackButton onBackPress={onBackPress} /> : null}
       </div>
       <div className={classes.center}>
-        <text className={classes.title}>{title}</text>
+        <span className={classes.title}>{title}</span>
       </div>
-      <di className={classes.right}>
+      <div className={classes.right}>
         {showRight ? (
-          <HeaderButton icon="ellipsis-v" onPress={onRightPress} />
+          <HeaderButton
+            icon="ellipsis-v"
+            onPress={onRightPress}
+            size={"large"}
+          />
         ) : null}
-      </di>
+      </div>
       <div className={classes.right} />
     </div>
   );

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "antd";
 
-const HeaderButton = ({ icon, onPress, className, btnStyle }) => {
+const HeaderButton = ({ icon, onPress, className, btnStyle, size }) => {
   return (
     <div className={className}>
       <Button
@@ -9,9 +9,9 @@ const HeaderButton = ({ icon, onPress, className, btnStyle }) => {
         type="primary"
         shape="circle"
         icon={
-          <FontAwesomeIcon icon={["fal", icon]} size={24} color="#FFFFFF" />
+          <FontAwesomeIcon icon={["fal", icon]} size={"sm"} color="#FFFFFF" />
         }
-        size={"medium"}
+        size={size}
         onClick={onPress}
       />
     </div>

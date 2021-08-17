@@ -10,9 +10,10 @@ const useStyle = createUseStyles({
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 5,
-    paddingLeft: "1%",
-    paddingRight: "1%",
+    paddingLeft: "3%",
+    paddingRight: "3%",
     height: 80,
+    border: "solid 1px #EEEEEE",
   },
   leftButton: {
     alignSelf: "center",
@@ -20,8 +21,8 @@ const useStyle = createUseStyles({
     flexDirection: "row",
   },
   logoHeader: {
-    height: 60,
-    paddingTop: "5%",
+    height: 55,
+    marginTop: 10,
   },
   rightButton: {
     alignSelf: "center",
@@ -43,6 +44,7 @@ const LeftComponent = ({ showBack, onBackPress, onRefreshPress }) => {
       icon="redo"
       onPress={onRefreshPress}
       btnStyle={classes.btnStyle}
+      size={"large"}
     />
   );
 };
@@ -71,6 +73,7 @@ export const MainHeader = ({
           icon="sign-out"
           onPress={onLogoutPress}
           btnStyle={classes.btnStyle}
+          size={"large"}
         />
       </div>
     </div>
