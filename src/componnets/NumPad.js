@@ -111,8 +111,10 @@ const IconButton = ({
       <div
         className={classes.button}
         style={{
-          opacity: disabled ? 0.5 : 1,
           backgroundColor,
+          "&:hover": {
+            opacity: 0.2,
+          },
         }}
       >
         <FontAwesomeIcon icon={["fal", icon]} color={iconColor} size="lg" />

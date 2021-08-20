@@ -20,6 +20,9 @@ const useStyle = createUseStyles({
     backgroundColor: "#FFFFFF",
     display: "flex",
     alignItems: "center",
+    borderTopWidth: 0,
+    borderRightWidth: 0,
+    borderLeftWidth: 0,
   },
   left: {
     flexDirection: "row",

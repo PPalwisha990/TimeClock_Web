@@ -128,6 +128,7 @@ const Login = () => {
                 title={loading ? "Logging In..." : "Login"}
                 onPressButton={onPress}
                 loading={loading}
+                backgroundColor={"#0c64ae"}
               />
             </div>
           </div>
@@ -146,6 +147,7 @@ const Login = () => {
                 title={loading ? "Verifying..." : "Verify"}
                 onPressButton={onPress}
                 loading={loading}
+                backgroundColor={"#0c64ae"}
               />
             </div>
           </div>

@@ -8,7 +8,7 @@ const useStyle = createUseStyles({
     display: "flex",
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: "#0c64ae",
+    //backgroundColor: "#0c64ae",
     justifyContent: "center",
     padding: 5,
   },
@@ -17,7 +17,7 @@ const useStyle = createUseStyles({
     color: "#fff",
   },
   button: {
-    backgroundColor: "#0c64ae",
+    //  backgroundColor: "#0c64ae",
     borderWidth: 0,
     borderRadius: 3,
     color: "#fff",
@@ -28,10 +28,10 @@ const useStyle = createUseStyles({
   },
 });
 
-export const Button = ({ title, onPressButton, loading }) => {
+export const Button = ({ title, onPressButton, loading, backgroundColor }) => {
   const classes = useStyle();
   return (
-    <div className={classes.container}>
+    <div className={classes.container} style={{ backgroundColor }}>
       {loading ? (
         <div>
           <LoadingOutlined className={classes.icon} />
@@ -40,7 +40,11 @@ export const Button = ({ title, onPressButton, loading }) => {
         <div />
       )}
       <div>
-        <button onClick={onPressButton} className={classes.button}>
+        <button
+          onClick={onPressButton}
+          className={classes.button}
+          style={{ backgroundColor }}
+        >
           {title}
         </button>
       </div>

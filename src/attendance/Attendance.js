@@ -1,6 +1,7 @@
+import { createUseStyles } from "react-jss";
+import { useHistory } from "react-router-dom";
 import Header from "../componnets/Header";
 import AttendanceHomeTab from "./tabs/AttendanceHomeTab";
-
 const employee = {
   employeeName: "Palwisha Baloch",
   designation: "Mobile Developer",
@@ -9,12 +10,14 @@ const employee = {
 };
 
 const Attendance = () => {
+  const styles = useStyle();
+  const history = useHistory();
   const onBackPress = () => {
-    //
+    history.goBack();
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <Header title="Attendance" onBackPress={onBackPress} showBack={true} />
       <AttendanceHomeTab
         employee={employee}
@@ -25,4 +28,10 @@ const Attendance = () => {
     </div>
   );
 };
+
+const useStyle = createUseStyles({
+  container: {
+    height: "100%",
+  },
+});
 export default Attendance;

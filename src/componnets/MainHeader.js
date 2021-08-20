@@ -14,6 +14,9 @@ const useStyle = createUseStyles({
     paddingRight: "3%",
     height: 80,
     border: "solid 1px #EEEEEE",
+    borderTopWidth: 0,
+    borderRightWidth: 0,
+    borderLeftWidth: 0,
   },
   leftButton: {
     alignSelf: "center",
