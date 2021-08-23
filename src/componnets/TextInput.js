@@ -36,6 +36,9 @@ const useStyles = createUseStyles({
     marginTop: 10,
     borderRadius: 3,
   },
+  searchContainer: {
+    width: "100%",
+  },
 });
 
 export const TextInput = ({
@@ -92,7 +95,7 @@ export const PasswordInput = ({ placeholder, onChange, value, label }) => {
     </div>
   );
 };
-export const Textarea = ({ placeholder, onChange, value, label }) => {
+export const Textarea = ({ placeholder, onChange, value, label, style }) => {
   const classes = useStyles();
   return (
     <div className={classes.inputContainer}>
@@ -101,7 +104,7 @@ export const Textarea = ({ placeholder, onChange, value, label }) => {
       </div>
       <div className={classes.textContainer}>
         <Input.TextArea
-          className={classes.textareaStyle}
+          className={style ? style : classes.textareaStyle}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
@@ -110,15 +113,23 @@ export const Textarea = ({ placeholder, onChange, value, label }) => {
     </div>
   );
 };
-export const SearchInput = ({ placeholder, onChange, loading, onSearch }) => {
+export const SearchInput = ({
+  placeholder,
+  onChange,
+  loading,
+  onSearch,
+  style,
+}) => {
   const classes = useStyles();
   return (
-    <Input.Search
-      className={classes.textareaStyle}
-      placeholder={placeholder}
-      onChange={onChange}
-      loading={loading}
-      onSearch={onSearch}
-    />
+    <div className={classes.searchContainer}>
+      <Input.Search
+        className={style ? style : classes.textareaStyle}
+        placeholder={placeholder}
+        onChange={onChange}
+        loading={loading}
+        onSearch={onSearch}
+      />
+    </div>
   );
 };

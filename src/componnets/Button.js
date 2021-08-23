@@ -28,10 +28,16 @@ const useStyle = createUseStyles({
   },
 });
 
-export const Button = ({ title, onPressButton, loading, backgroundColor }) => {
+export const Button = ({
+  title,
+  onPressButton,
+  loading,
+  backgroundColor,
+  margin,
+}) => {
   const classes = useStyle();
   return (
-    <div className={classes.container} style={{ backgroundColor }}>
+    <div className={classes.container} style={{ backgroundColor, margin }}>
       {loading ? (
         <div>
           <LoadingOutlined className={classes.icon} />

@@ -3,6 +3,8 @@ import { createUseStyles } from "react-jss";
 import Avatar from "../../componnets/Avatar";
 import Field from "../../componnets/Field";
 import InfoBanner from "../../componnets/InfoBanner";
+import { Picker } from "../../componnets/Picker";
+import { TextInput } from "../../componnets/TextInput";
 import AttendanceButtonGenerator from "./AttendanceButtonGenerator";
 import Map from "./Map";
 import Schedules from "./Schedules";
@@ -56,7 +58,7 @@ const AttendanceHomeTab = ({ employee }) => {
           <AttendanceButtonGenerator
             employeeId={employee?.employeeId}
             loading={buttonsLoading}
-            lastAttendanceType={lastAttendanceType}
+            lastAttendanceType={1}
             onButtonPress={onButtonPress}
             multipleAttendance={multipleAttendance}
             limitAttendanceToSignInSignOut={false}
@@ -68,28 +70,22 @@ const AttendanceHomeTab = ({ employee }) => {
         )}
         <div style={styles.fields}>
           {includeFields ? (
-            <Field icon="building" iconColor="#EB5757" name="Station"></Field>
+            <Field icon="building" iconColor="#EB5757" name="Station">
+              <Picker title={"search station"} key={"stations"} />
+            </Field>
           ) : null}
 
           {includeFields ? (
             <Field icon="tasks" iconColor="#27AE60" name="Project">
-              {/* <Picker
-                    single={true}
-                    defaultValue={selectedProjectId}
-                    key="Project"
-                    fieldName={'Project'}
-                    values={projects}
-                    onValueSelect={(id) => {
-                      setSelectedProjectId(id);
-                    }}
-                  /> */}
+              <Picker title={"search project"} key={"projects"} />
             </Field>
           ) : null}
           <Field icon="sticky-note" iconColor="#6254DB" name="Notes">
-            {/* <TextArea
-                  onChangeText={onNotesChange}
-                  placeholder={'Add notes here'}
-                /> */}
+            <TextInput
+              //onChange={}
+              placeholder={"Add notes here"}
+              style={styles.textarea}
+            />
           </Field>
         </div>
       </div>
@@ -164,6 +160,10 @@ const useStyle = createUseStyles({
     justifyContent: "center",
     borderRadius: 10,
     marginLeft: 20,
+  },
+  textarea: {
+    borderWidth: 0,
+    right: 25,
   },
 });
 

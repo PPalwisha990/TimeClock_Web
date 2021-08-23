@@ -3,25 +3,24 @@ import { createUseStyles } from "react-jss";
 
 const useStyle = createUseStyles({
   container: {
-    paddingTop: 10,
-    paddingBottom: 10,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
   },
   name: {
     color: "#778392",
     fontSize: 14,
     paddingBottom: 10,
   },
-  wrapper: {
-    paddingBottom: 10,
-    paddingTop: 10,
-    width: "100%",
-  },
   details: {
     display: "flex",
+    flexDirection: "column",
+    marginLeft: 30,
+    paddingBottom: 5,
   },
   row: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     border: "solid 1px #E3E3E3",
     marginLeft: 20,
     marginRight: 20,
@@ -38,15 +37,16 @@ const Field = ({ children, name, icon, iconColor }) => {
   const styles = useStyle();
   return (
     <div className={styles.row}>
-      <div className={styles.iconContainer}>
-        <FontAwesomeIcon icon={["fal", icon]} size={"1x"} color={iconColor} />
-      </div>
-      <div className={styles.details}>
-        <div className={styles.container}>
+      <div className={styles.container}>
+        <div className={styles.iconContainer}>
+          <FontAwesomeIcon icon={["fal", icon]} size={"1x"} color={iconColor} />
+        </div>
+        <div>
           <span className={styles.name}>{name}</span>
-          {children}
         </div>
       </div>
+
+      <div className={styles.details}>{children}</div>
     </div>
   );
 };

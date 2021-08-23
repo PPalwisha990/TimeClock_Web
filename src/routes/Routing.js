@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import AuthProvider from "../context/AuthProvider";
-import Navbar from "../nav/Navbar";
+import Routes from "./Routes";
 
 const Routing = () => {
   const [user, setUserState] = useState(true);
@@ -23,8 +23,9 @@ const Routing = () => {
 
   return (
     <Router>
-      <Navbar />
-      <AuthProvider value={user}>{/* <Routes /> */}</AuthProvider>
+      <AuthProvider value={user}>
+        <Routes />
+      </AuthProvider>
     </Router>
   );
 };

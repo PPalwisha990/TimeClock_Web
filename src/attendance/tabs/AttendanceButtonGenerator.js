@@ -15,14 +15,16 @@ import AttendanceTypes from "../AttendanceTypes";
 
 const useStyle = createUseStyles({
   row: {
-    display: "flex",
     flexDirection: "row",
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "space-evenly",
   },
   buttonContainer: {
     marginLeft: 20,
     marginRight: 20,
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

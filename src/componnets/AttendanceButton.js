@@ -1,38 +1,16 @@
 import React from "react";
-import { createUseStyles } from "react-jss";
 import AttendanceTypes from "./../attendance/AttendanceTypes";
 import { Button } from "./Button";
 
-const styles = createUseStyles({
-  touchable: {
-    flex: 1,
-    margin: 5,
-  },
-  container: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 5,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  buttonText: {
-    fontSize: 16,
-    color: "#FFFFFF",
-  },
-});
-
-const AttendanceButton = ({ text, color, onPress, visible }) => {
+const AttendanceButton = ({ text, color, onPress, visible, margin }) => {
   if (visible) {
     return (
-      <div className={styles.touchable}>
-        {/* <div className={styles.container} style={{backgroundColor: color}}>
-          <span className={styles.buttonText}>
-            {text}
-          </span>
-        </div> */}
-        <Button title={text} onPressButton={onPress} backgroundColor={color} />
-      </div>
+      <Button
+        title={text}
+        onPressButton={onPress}
+        backgroundColor={color}
+        margin={margin}
+      />
     );
   }
 
@@ -63,6 +41,7 @@ export const LunchOutButton = ({ onPress, visible }) => {
       color="#0BD07C"
       onPress={buttonPressed}
       visible={visible}
+      margin={5}
     />
   );
 };
@@ -77,6 +56,7 @@ export const LunchInButton = ({ onPress, visible }) => {
       color="#56CCF2"
       onPress={buttonPressed}
       visible={visible}
+      margin={5}
     />
   );
 };
@@ -91,6 +71,7 @@ export const SignOutButton = ({ onPress, visible }) => {
       color="#EB5757"
       onPress={buttonPressed}
       visible={visible}
+      margin={3}
     />
   );
 };
@@ -105,6 +86,7 @@ export const AdditionalOutButton = ({ onPress, visible }) => {
       color="#56CCF2"
       onPress={buttonPressed}
       visible={visible}
+      margin={3}
     />
   );
 };
@@ -119,6 +101,7 @@ export const AdditionalInButton = ({ onPress, visible }) => {
       color="#56CCF2"
       onPress={buttonPressed}
       visible={visible}
+      margin={3}
     />
   );
 };
@@ -133,6 +116,7 @@ export const ExtraInButton = ({ onPress, visible }) => {
       color="#56CCF2"
       onPress={buttonPressed}
       visible={visible}
+      margin={3}
     />
   );
 };
@@ -147,6 +131,7 @@ export const ExtraOutButton = ({ onPress, visible }) => {
       color="#56CCF2"
       onPress={buttonPressed}
       visible={visible}
+      margin={5}
     />
   );
 };
