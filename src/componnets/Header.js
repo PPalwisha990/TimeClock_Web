@@ -43,10 +43,17 @@ const useStyle = createUseStyles({
   },
 });
 
-const Header = ({ onBackPress, title, showBack, showRight, onRightPress }) => {
+const Header = ({
+  onBackPress,
+  title,
+  showBack,
+  showRight,
+  onRightPress,
+  style,
+}) => {
   const classes = useStyle();
   return (
-    <div className={classes.header}>
+    <div className={style ? style : classes.header}>
       <div className={classes.left}>
         {showBack ? <BackButton onBackPress={onBackPress} /> : null}
       </div>

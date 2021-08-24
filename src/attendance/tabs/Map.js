@@ -34,7 +34,7 @@ const Map = () => {
 const useStyle = createUseStyles({
   map: {
     height: "250px",
-    width: "600px",
+    width: "560px",
     border: "solid 1px #d8d8d8",
   },
 });

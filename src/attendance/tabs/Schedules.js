@@ -1,24 +1,46 @@
 import moment from "moment";
 import React from "react";
 import { createUseStyles } from "react-jss";
+import { List } from "../../componnets/List";
 import NoSchedule from "../../images/NoSchedule.svg";
+
+const data = [
+  {
+    title: "upcoming",
+    time: "3:00 PM - 6:00 PM",
+    break: "0 min",
+  },
+  {
+    title: "Title 2",
+    time: "3:00 PM - 6:00 PM",
+    break: "0 min",
+  },
+  {
+    title: "Title 3",
+    time: "3:00 PM - 6:00 PM",
+    break: "0 min",
+  },
+  {
+    title: "Title 4",
+    time: "3:00 PM - 6:00 PM",
+    break: "0 min",
+  },
+];
 
 const Schedules = () => {
   const styles = useStyle();
 
+  const onItemPress = (item) => {
+    console.log("item ", item);
+  };
+
   let date = moment().format("dddd, MMM DD, YYYY");
-  let workshifts = [];
+  let workshifts = ["a"];
   if (workshifts && workshifts.length > 0) {
     return (
       <div>
         <span className={styles.date}>{date}</span>
-        {/* <FlatList
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-          data={workshifts}
-          renderItem={({item}) => <ScheduleCard data={item} />}
-          keyExtractor={item => item.SchID.toString()}
-        /> */}
+        <List dataArray={data} horizontal={true} onItemPress={onItemPress} />
       </div>
     );
   } else {

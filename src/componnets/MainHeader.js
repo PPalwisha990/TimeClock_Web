@@ -12,7 +12,7 @@ const useStyle = createUseStyles({
     padding: 5,
     paddingLeft: "3%",
     paddingRight: "3%",
-    height: 80,
+    // height: 80,
     border: "solid 1px #EEEEEE",
     borderTopWidth: 0,
     borderRightWidth: 0,

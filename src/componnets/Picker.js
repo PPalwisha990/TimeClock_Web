@@ -12,8 +12,19 @@ export const Picker = ({ defaultValue, title, key }) => {
     setIsModalVisible(!isModalVisible);
   };
 
+  const data = [
+    { text: "Some contents" },
+    { text: "Some contents" },
+    { text: "Some contents" },
+    { text: "Some contents" },
+    { text: "Some contents" },
+    { text: "Some contents" },
+    { text: "Some contents" },
+    { text: "Some contents" },
+  ];
+
   return (
-    <div className={styles.column} key={key}>
+    <div className={styles.column} key={key} onClick={onToggle}>
       <div className={styles.container}>
         <div>{defaultValue}</div>
         <div className={styles.buttonContainer}>
@@ -21,7 +32,6 @@ export const Picker = ({ defaultValue, title, key }) => {
             icon={["fal", "chevron-down"]}
             size={"1x"}
             color="#3F3D56"
-            onClick={onToggle}
           />
         </div>
       </div>
@@ -41,18 +51,9 @@ export const Picker = ({ defaultValue, title, key }) => {
           mask={false}
         >
           <div>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+            {data.map((item) => {
+              return <p>{item.text}</p>;
+            })}
           </div>
         </Modal>
       </div>

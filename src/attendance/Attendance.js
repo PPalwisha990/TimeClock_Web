@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
 import { useHistory } from "react-router-dom";
 import Header from "../componnets/Header";
+import Screen from "../componnets/Screen";
 import AttendanceHomeTab from "./tabs/AttendanceHomeTab";
 const employee = {
   employeeName: "Palwisha Baloch",
@@ -17,15 +18,23 @@ const Attendance = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <Header title="Attendance" onBackPress={onBackPress} showBack={true} />
-      <AttendanceHomeTab
-        employee={employee}
-        accessCode={"123"}
-        // location={location}
-        // onSuccess={onSuccessCallback}
-      />
-    </div>
+    <Screen
+      content={
+        <div className={styles.container}>
+          <Header
+            title="Attendance"
+            onBackPress={onBackPress}
+            showBack={true}
+          />
+          <AttendanceHomeTab
+            employee={employee}
+            accessCode={"123"}
+            // location={location}
+            // onSuccess={onSuccessCallback}
+          />
+        </div>
+      }
+    />
   );
 };
 

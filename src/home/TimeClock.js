@@ -27,7 +27,7 @@ const TimeClock = ({ onAccessCodeChange, clearAccessCode }) => {
 
   const onSubmit = () => {
     console.log("attendance");
-    history.push("./attendance");
+    history.push("/attendance");
   };
 
   return (

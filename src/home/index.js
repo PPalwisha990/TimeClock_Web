@@ -1,4 +1,5 @@
 import { MainHeader } from "../componnets/MainHeader";
+import Screen from "../componnets/Screen";
 import TimeClock from "./TimeClock";
 
 const Home = () => {
@@ -23,10 +24,14 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <MainHeader />
-      <TimeClock />
-    </div>
+    <Screen
+      content={
+        <div>
+          <MainHeader />
+          <TimeClock />
+        </div>
+      }
+    />
   );
 };
 export default Home;
