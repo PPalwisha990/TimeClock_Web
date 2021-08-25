@@ -36,6 +36,11 @@ const useStyles = createUseStyles({
     marginTop: 10,
     borderRadius: 3,
   },
+  searchStyle: {
+    color: "#3f3d56",
+    borderRadius: 10,
+    border: 0,
+  },
   searchContainer: {
     width: "100%",
   },
@@ -124,7 +129,7 @@ export const SearchInput = ({
   return (
     <div className={classes.searchContainer}>
       <Input.Search
-        className={style ? style : classes.textareaStyle}
+        className={style ? style : classes.searchStyle}
         placeholder={placeholder}
         onChange={onChange}
         loading={loading}

@@ -1,7 +1,9 @@
 import moment from "moment";
 import React from "react";
 import { createUseStyles } from "react-jss";
+import { useHistory } from "react-router";
 import { List } from "../../componnets/List";
+import { ScheduleCard } from "../../componnets/ScheduleCard";
 import NoSchedule from "../../images/NoSchedule.svg";
 
 const data = [
@@ -9,38 +11,52 @@ const data = [
     title: "upcoming",
     time: "3:00 PM - 6:00 PM",
     break: "0 min",
+    color: "fff0c5",
   },
   {
     title: "Title 2",
     time: "3:00 PM - 6:00 PM",
     break: "0 min",
+    color: "d4ffd2",
   },
   {
     title: "Title 3",
     time: "3:00 PM - 6:00 PM",
     break: "0 min",
+    color: "c9dcff",
   },
   {
-    title: "Title 4",
+    title: "upcoming",
     time: "3:00 PM - 6:00 PM",
     break: "0 min",
+    color: "fff0c5",
   },
 ];
 
 const Schedules = () => {
   const styles = useStyle();
+  let history = useHistory();
 
-  const onItemPress = (item) => {
-    console.log("item ", item);
+  const onIconPress = () => {
+    history.push({
+      pathname: "/scheduleList",
+      state: { data },
+    });
   };
 
   let date = moment().format("dddd, MMM DD, YYYY");
   let workshifts = ["a"];
   if (workshifts && workshifts.length > 0) {
     return (
-      <div>
+      <div className={styles.schedule}>
         <span className={styles.date}>{date}</span>
-        <List dataArray={data} horizontal={true} onItemPress={onItemPress} />
+        <List
+          dataArray={data}
+          horizontal={true}
+          renderItems={(item, index) => <ScheduleCard data={item} />}
+          showIconMore={true}
+          onIconPress={onIconPress}
+        />
       </div>
     );
   } else {
@@ -59,64 +75,6 @@ const Schedules = () => {
 };
 
 const useStyle = createUseStyles({
-  cardContainer: {
-    width: 300,
-    borderRadius: 5,
-    paddingTop: 10,
-    paddingLeft: 10,
-    paddingRight: 20,
-    marginRight: 10,
-    borderWidth: 1,
-  },
-  content: {
-    width: "50%",
-    paddingTop: 4,
-    paddingBottom: 4,
-    paddingLeft: 2,
-    paddingRight: 2,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 25,
-  },
-  status: {
-    fontSize: 14,
-    color: "#FFFFFF",
-  },
-  detailContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingLeft: 2,
-    paddingRight: 2,
-    paddingTop: 4,
-    paddingBottom: 4,
-  },
-  time: {
-    fontSize: 20,
-    color: "#778392",
-    fontWeight: "bold",
-  },
-  project: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 2,
-  },
-  projectText: {
-    fontSize: 14,
-    color: "#778392",
-  },
-  mealBreak: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 2,
-    marginVertical: 8,
-  },
-  mealBreakText: {
-    fontSize: 14,
-    color: "#778392",
-  },
   noSchedule: {
     justifyContent: "center",
     alignItems: "center",
@@ -125,6 +83,10 @@ const useStyle = createUseStyles({
     padding: 10,
     display: "flex",
     flexDirection: "column",
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  schedule: {
     marginLeft: 20,
     marginRight: 20,
   },
