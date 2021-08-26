@@ -8,6 +8,7 @@ import { TextInput } from "../../componnets/TextInput";
 import AttendanceButtonGenerator from "./AttendanceButtonGenerator";
 import Map from "./Map";
 import Schedules from "./Schedules";
+import WebCam from "./WebCam";
 
 const AttendanceHomeTab = ({ employee }) => {
   const [buttonsLoading, setButtonsLoading] = useState(false);
@@ -15,6 +16,7 @@ const AttendanceHomeTab = ({ employee }) => {
   const [multipleAttendance, setMultipleAttendance] = useState(false);
   const [settings, setSettings] = useState();
   const [includeFields, setIncludeFields] = useState(true);
+  const [showCamera, setShowCamera] = useState(false);
 
   let signInTime = "9:00 AM";
   let signInDay = "today";
@@ -27,8 +29,21 @@ const AttendanceHomeTab = ({ employee }) => {
 
   const onButtonPress = (type) => {
     setButtonsLoading(true);
+    onCameraVisibilityChange(true);
+  };
+  const onCameraVisibilityChange = (visible) => {
+    setShowCamera(visible);
+    console.log("onCameraVisibilityChange: ", visible);
   };
 
+  const onImageCaptured = (data) => {
+    setButtonsLoading(true);
+    console.log("Image captured: ", data);
+  };
+
+  if (showCamera) {
+    return <WebCam visible={showCamera} onImageCaptured={onImageCaptured} />;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.coulumn}>
