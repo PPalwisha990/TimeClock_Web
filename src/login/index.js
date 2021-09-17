@@ -7,58 +7,6 @@ import backgroundImage from "../images/background.jpg";
 import kiosklogo from "../images/kiosklogo.png";
 import logo from "../images/logo.png";
 
-const useStyles = createUseStyles({
-  mainContainer: {
-    backgroundImage: `url(${backgroundImage})`,
-    display: "flex",
-    flexDirection: "column",
-    height: "100%",
-    padding: 5,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  },
-  conatiner: {
-    backgroundColor: "white",
-    opacity: 0.9,
-    width: 400,
-    display: "flex",
-    height: 350,
-    padding: 10,
-    borderRadius: 2,
-    alignSelf: "center",
-    flexDirection: "column",
-    justifyContent: "center",
-    marginTop: "5%",
-  },
-  logoImageContainer: {
-    alignSelf: "center",
-    justifyContent: "center",
-  },
-  logo: {
-    height: 55,
-    marginTop: 5,
-  },
-  logoImage: {
-    height: 60,
-  },
-  oraganizationForm: {
-    marginTop: 10,
-    marginLeft: 20,
-    marginRight: 20,
-  },
-  heading: {
-    padding: 5,
-    color: "#3F3D56",
-    fontWeight: "300",
-    fontSize: 24,
-    paddingTop: 10,
-  },
-
-  btncontainer: {
-    paddingTop: 10,
-  },
-});
-
 const Login = () => {
   let history = useHistory();
   const classes = useStyles();
@@ -107,53 +55,88 @@ const Login = () => {
       <div className={classes.conatiner}>
         <div className={classes.logoImageContainer}>
           <img src={kiosklogo} className={classes.logo} alt="logo" />
-          <h1 className={classes.heading}>Employee Login</h1>
         </div>
-        {showLogin ? (
-          <div className={classes.oraganizationForm}>
-            <TextInput
-              placeholder={"username"}
-              label={"Username:"}
-              value={username}
-              onChange={onChangeUsername}
+        <div className={classes.oraganizationForm}>
+          <TextInput
+            label={"Username:"}
+            value={username}
+            onChange={onChangeUsername}
+          />
+          <PasswordInput
+            label={"Pasword:"}
+            value={password}
+            onChange={onChangePassword}
+          />
+          <TextInput
+            suffix=".co"
+            prefix={"https://"}
+            placeholder={"domain"}
+            value={organizationCode}
+            onChange={onChangeText}
+          />
+          <div className={classes.btncontainer}>
+            <Button
+              title={loading ? "Logging In..." : "Login"}
+              onPressButton={onPress}
+              loading={loading}
+              backgroundColor={"#0c64ae"}
             />
-            <PasswordInput
-              placeholder={"password"}
-              label={"Pasword:"}
-              value={password}
-              onChange={onChangePassword}
-            />
-            <div className={classes.btncontainer}>
-              <Button
-                title={loading ? "Logging In..." : "Login"}
-                onPressButton={onPress}
-                loading={loading}
-                backgroundColor={"#0c64ae"}
-              />
-            </div>
           </div>
-        ) : (
-          <div className={classes.oraganizationForm}>
-            <TextInput
-              suffix=".co"
-              prefix={"https://"}
-              placeholder={"enter domain"}
-              value={organizationCode}
-              label={"Domain:"}
-              onChange={onChangeText}
-            />
-            <div className={classes.btncontainer}>
-              <Button
-                title={loading ? "Verifying..." : "Verify"}
-                onPressButton={onPress}
-                loading={loading}
-                backgroundColor={"#0c64ae"}
-              />
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );
 };
+const useStyles = createUseStyles({
+  mainContainer: {
+    backgroundImage: `url(${backgroundImage})`,
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+    padding: 5,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
+  conatiner: {
+    backgroundColor: "white",
+    opacity: 0.9,
+    width: 400,
+    display: "flex",
+    height: 400,
+    padding: 10,
+    borderRadius: 2,
+    alignSelf: "center",
+    flexDirection: "column",
+    justifyContent: "center",
+    marginTop: "5%",
+  },
+  logoImageContainer: {
+    alignSelf: "center",
+    justifyContent: "center",
+  },
+  logo: {
+    height: 55,
+    marginTop: 5,
+  },
+  logoImage: {
+    height: 60,
+  },
+  oraganizationForm: {
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 20,
+  },
+  heading: {
+    padding: 5,
+    color: "#3F3D56",
+    fontWeight: "300",
+    fontSize: 24,
+    paddingTop: 10,
+  },
+
+  btncontainer: {
+    paddingTop: 10,
+    marginLeft: 14,
+  },
+});
 export default Login;

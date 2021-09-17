@@ -10,15 +10,11 @@ const videoConstraints = {
 
 const WebCam = ({ onImageCaptured }) => {
   const webcamRef = React.useRef(null);
-  const [seconds, setSeconds] = useState(3);
+  const [seconds, setSeconds] = useState(5);
 
   const capture = () => {
-    if (webcamRef.current) {
-      const imageSrc = webcamRef.current.getScreenshot();
-      onImageCaptured(imageSrc);
-    } else {
-      console.log("Error");
-    }
+    const imageSrc = webcamRef.current.getScreenshot();
+    onImageCaptured(imageSrc);
   };
 
   const styles = useStyle();
@@ -38,30 +34,24 @@ const WebCam = ({ onImageCaptured }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.cameraConatiner}>
-        <Webcam
-          audio={false}
-          height={520}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          width={1200}
-          videoConstraints={videoConstraints}
-        />
-      </div>
       <div className={styles.layer}>
         <div className={styles.timerContainer}>
           <span className={styles.timerText}>{seconds}</span>
         </div>
       </div>
+
+      <Webcam
+        audio={false}
+        height={520}
+        ref={webcamRef}
+        screenshotFormat="image/png"
+        width={1200}
+        videoConstraints={videoConstraints}
+      />
     </div>
   );
 };
 const useStyle = createUseStyles({
-  container: {
-    display: "flex",
-    height: "100%",
-  },
-
   timerContainer: {
     backgroundColor: "#2B81C7",
     padding: "10px 35px",
@@ -80,8 +70,8 @@ const useStyle = createUseStyles({
     position: "absolute",
     width: "100%",
     height: "100%",
-    alignItems: "center",
-    justifyContent: "flex-end",
+    left: 600,
+    top: 450,
   },
 });
 

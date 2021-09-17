@@ -5,17 +5,18 @@ import { createUseStyles } from "react-jss";
 const useStyles = createUseStyles({
   inputContainer: {
     display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: "column",
     width: "100%",
     flex: 1,
     padding: 5,
   },
   labelContainer: {
-    paddingTop: 10,
+    paddingRight: 10,
+    paddingLeft: 14,
   },
   inputLabel: {
     color: "#3f3d56",
+    fontSize: 12,
   },
   textContainer: {
     paddingLeft: 10,
