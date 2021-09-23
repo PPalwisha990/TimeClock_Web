@@ -1,24 +1,19 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import AuthProvider from "../context/AuthProvider";
+import { getUser } from "../helpers/LocalStorageHelper";
 import Routes from "./Routes";
 
 const Routing = () => {
   const [user, setUserState] = useState(true);
 
-  const initilize = () => {
-    let user = true;
-    const userObject = {
-      username: "palwisha",
-      email: "palwisha@webhr.co",
-    };
-    if (user) {
-      setUserState(userObject);
-    }
+  const initialize = async () => {
+    let user = await getUser();
+    setUserState(user);
   };
 
   useEffect(() => {
-    initilize();
+    initialize();
   }, []);
 
   return (

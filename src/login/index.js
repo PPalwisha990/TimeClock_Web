@@ -1,41 +1,21 @@
 import { useState } from "react";
 import { createUseStyles } from "react-jss";
-import { useHistory } from "react-router";
 import { Button } from "../componnets/Button";
 import { PasswordInput, TextInput } from "../componnets/TextInput";
+import { onLoginPressed } from "../controllers/LoginController";
+import useAuth from "../hooks/useAuth";
 import backgroundImage from "../images/background.jpg";
 import kiosklogo from "../images/kiosklogo.png";
 import logo from "../images/logo.png";
 
 const Login = () => {
-  let history = useHistory();
+  const { setUser } = useAuth();
+
   const classes = useStyles();
   const [organizationCode, setOrganizationCode] = useState("");
-  const [showLogin, setShowLogin] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const onPress = () => {
-    setLoading(true);
-    if (showLogin) {
-      setTimeout(() => {
-        setLoading(false);
-        history.push("/home");
-      }, 2000);
-    }
-
-    if (organizationCode == "dev") {
-      setTimeout(() => {
-        setShowLogin(true);
-        setLoading(false);
-      }, 2000);
-    } else {
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
-    }
-  };
 
   const onChangeText = (e) => {
     setOrganizationCode(e.target.value);
@@ -45,6 +25,25 @@ const Login = () => {
   };
   const onChangePassword = (e) => {
     setPassword(e.target.value);
+  };
+
+  const onSetLoading = (value) => {
+    setLoading(value);
+  };
+
+  const onSetUser = (user) => {
+    setUser(user);
+  };
+
+  const onLogin = () => {
+    setLoading(true);
+    onLoginPressed(
+      organizationCode,
+      username,
+      password,
+      onSetLoading,
+      onSetUser
+    );
   };
 
   return (
@@ -77,7 +76,7 @@ const Login = () => {
           <div className={classes.btncontainer}>
             <Button
               title={loading ? "Logging In..." : "Login"}
-              onPressButton={onPress}
+              onPressButton={onLogin}
               loading={loading}
               backgroundColor={"#0c64ae"}
             />
