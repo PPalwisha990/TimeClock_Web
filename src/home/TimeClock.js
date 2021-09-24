@@ -23,15 +23,7 @@ const TimeClock = ({ onAccessCodeChange, clearAccessCode }) => {
 
   return (
     <div className={classes.main}>
-      <div
-        style={{
-          width: "50%",
-          height: "100%",
-          justifyContent: "center",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <div className={classes.numpad}>
         <NumPad
           onSubmit={onSubmit}
           accessCode={accessCode}
@@ -39,16 +31,7 @@ const TimeClock = ({ onAccessCodeChange, clearAccessCode }) => {
           onClear={clearAccessCode}
         />
       </div>
-      <div
-        style={{
-          width: "50%",
-          height: "100%",
-          justifyContent: "center",
-          display: "flex",
-          alignItems: "center",
-          marginTop: 60,
-        }}
-      >
+      <div className={classes.clock}>
         <AnalogClock />
       </div>
     </div>
@@ -68,6 +51,21 @@ const useStyle = createUseStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  numpad: {
+    width: "50%",
+    height: "100%",
+    justifyContent: "center",
+    display: "flex",
+    alignItems: "center",
+  },
+  clock: {
+    width: "50%",
+    height: "100%",
+    justifyContent: "center",
+    display: "flex",
+    alignItems: "center",
+    marginTop: 60,
   },
 });
 

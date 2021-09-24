@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { MainHeader } from "../componnets/MainHeader";
 import Screen from "../componnets/Screen";
+import Toast from "../componnets/Toast";
 import EmployeesList from "./EmployeeList";
 import TimeClock from "./TimeClock";
 
@@ -25,7 +26,7 @@ const Home = () => {
           };
         });
     } else {
-      alert("Sorry Not available!");
+      Toast.warning("Sorry Not available!");
     }
   }, []);
 
