@@ -1,8 +1,13 @@
 const { ipcMain } = require("electron");
-const db = require("../db/database");
+const { onRefresh } = require("../db/database");
 
-ipcMain.handle("create-databse-tables", (event, arg) => {
-  db.createTables(arg);
+ipcMain.handle("test-invoke", (event, args) => {
+  return args;
+});
+
+ipcMain.on("create-databse-tables", async (event, arg) => {
+  let response = onRefresh();
+  return response;
 });
 
 ipcMain.on("asynchronous-message", (event, arg) => {

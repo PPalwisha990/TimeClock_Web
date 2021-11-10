@@ -14,7 +14,12 @@ const { ipcRenderer, contextBridge } = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
   // Invoke Methods
-  refreshTables: (args) => ipcRenderer.invoke("create-databse-tables", args),
+
+  testInvoke: (args) => ipcRenderer.invoke("test-invoke", args),
+  refreshTables: (args) =>
+    ipcRenderer.send("create-databse-tables", args).then((result) => {
+      return result;
+    }),
   // Send Methods
   getEmployeesDb: (args) => ipcRenderer.send("employeesAll", args),
   // Receive Methods

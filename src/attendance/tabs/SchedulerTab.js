@@ -7,8 +7,27 @@ const SchedulerTab = ({ navigation, route }) => {
   const [responses, setResponses] = useState([]);
   //const styles = useStyle();
 
+  let employee = [
+    "36",
+    "palwisha",
+    "palwisha",
+    "090078601",
+    "778963",
+    "palwish@webhr.co",
+    "2",
+    "4",
+    "33",
+    "34",
+    "7",
+    "female",
+    "active",
+    "22-08-02",
+    "adeujkh",
+    "44",
+  ];
+
   const sendMsg = async (msg) => {
-    let response = await window.api.testInvoke(msg);
+    let response = await window.api.refreshTables(employee);
     console.log("Response==", response);
   };
 
