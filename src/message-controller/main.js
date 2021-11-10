@@ -6,7 +6,7 @@ ipcMain.handle("test-invoke", (event, args) => {
 });
 
 ipcMain.on("create-databse-tables", async (event, arg) => {
-  let response = onRefresh();
+  let response = onRefresh(arg);
   return response;
 });
 

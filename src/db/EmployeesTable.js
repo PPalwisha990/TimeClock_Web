@@ -5,8 +5,6 @@ const COLUMNS = {
   EMPLOYEE_ID: "EmployeeId",
   EMPLOYEE_NAME: "EmployeeName",
   USERNAME: "UserName",
-  FIRSTNAME: "FirstName",
-  LASTNAME: "LastName",
   MOBILE_NUMBER: "MobileNumber",
   OFFICE_NUMBER: "OfficeNumber",
   EMAIL_ADDRESS: "EmailAddress",
@@ -21,9 +19,10 @@ const COLUMNS = {
   EMPLOYEE_STATUS: "EmployeeStatus",
   PHOTO: "Photo",
   REPORTS_TO_ROLE: "ReportsToRole",
+  WORK_SHIFT_ID: "WorkshiftId",
 };
 
-export const createTable = async () => {
+const createTable = async () => {
   return sqliteHelper.createTable(TABLE_NAME, [
     {
       columnName: COLUMNS.EMPLOYEE_ID,
@@ -35,14 +34,6 @@ export const createTable = async () => {
     },
     {
       columnName: COLUMNS.USERNAME,
-      dataType: "TEXT",
-    },
-    {
-      columnName: COLUMNS.FIRSTNAME,
-      dataType: "TEXT",
-    },
-    {
-      columnName: COLUMNS.LASTNAME,
       dataType: "TEXT",
     },
     {
@@ -101,30 +92,32 @@ export const createTable = async () => {
       columnName: COLUMNS.REPORTS_TO_ROLE,
       dataType: "INTEGER",
     },
+    {
+      columnName: COLUMNS.WORK_SHIFT_ID,
+      dataType: "INTEGER",
+    },
   ]);
 };
 
-export const dropTable = async () => {
+const dropTable = async () => {
   return sqliteHelper.dropTable(TABLE_NAME);
 };
 
-export const insert = async (items) => {
+const insert = async (items) => {
   let data = [];
-
-  items.map((item) => {
+  items.map((item, ind) => {
+    console.log("Item===", item, "== index", ind);
     let obj = {};
     obj[COLUMNS.EMPLOYEE_ID] = item[0];
     obj[COLUMNS.EMPLOYEE_NAME] = item[1];
-    obj[COLUMNS.USERNAME] = item[3];
-    obj[COLUMNS.FIRSTNAME] = item[4];
-    obj[COLUMNS.LASTNAME] = item[5];
-    obj[COLUMNS.MOBILE_NUMBER] = item[22];
-    obj[COLUMNS.OFFICE_NUMBER] = item[23];
-    obj[COLUMNS.EMAIL_ADDRESS] = item[6];
-    obj[COLUMNS.EMPLOYEE_DESIGNATION_ID] = item[7];
-    obj[COLUMNS.DEPARTMENT_ID] = item[8];
-    obj[COLUMNS.STATION_ID] = item[9];
-    obj[COLUMNS.COMPANY_ID] = item[15];
+    obj[COLUMNS.USERNAME] = item[2];
+    obj[COLUMNS.MOBILE_NUMBER] = item[3];
+    obj[COLUMNS.OFFICE_NUMBER] = item[4];
+    obj[COLUMNS.EMAIL_ADDRESS] = item[5];
+    obj[COLUMNS.EMPLOYEE_DESIGNATION_ID] = item[6];
+    obj[COLUMNS.DEPARTMENT_ID] = item[7];
+    obj[COLUMNS.STATION_ID] = item[8];
+    obj[COLUMNS.COMPANY_ID] = item[9];
     obj[COLUMNS.REPORTS_TO] = item[10];
     obj[COLUMNS.ACCESS_CODE] = item[19];
     obj[COLUMNS.IOS_ID] = item[20];
@@ -138,3 +131,5 @@ export const insert = async (items) => {
 
   return sqliteHelper.insert(TABLE_NAME, data);
 };
+
+module.exports = { insert, createTable, dropTable };

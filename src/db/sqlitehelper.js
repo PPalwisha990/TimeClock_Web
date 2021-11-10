@@ -102,7 +102,7 @@ const dropTable = (tableName) => {
   return new Promise((resolve, reject) => {
     try {
       const query = "DROP TABLE IF EXISTS " + tableName;
-      this.executeQuery(query, [], resolve, reject);
+      executeQuery(query, [], resolve, reject);
     } catch (error) {
       reject(error);
       console.error(error);
