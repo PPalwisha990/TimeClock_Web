@@ -1,8 +1,8 @@
 const { ipcMain } = require("electron");
 const db = require("../db/database");
 
-ipcMain.handle("test-invoke", (event, arg) => {
-  db.openDatabase();
+ipcMain.handle("create-databse-tables", (event, arg) => {
+  db.createTables(arg);
 });
 
 ipcMain.on("asynchronous-message", (event, arg) => {

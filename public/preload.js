@@ -14,12 +14,12 @@ const { ipcRenderer, contextBridge } = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
   // Invoke Methods
-  testInvoke: (args) => ipcRenderer.invoke("test-invoke", args),
+  refreshTables: (args) => ipcRenderer.invoke("create-databse-tables", args),
   // Send Methods
-  testSend: (args) => ipcRenderer.send("test-send", args),
+  getEmployeesDb: (args) => ipcRenderer.send("employeesAll", args),
   // Receive Methods
-  testReceive: (callback) =>
-    ipcRenderer.on("test-receive", (event, data) => {
+  getEmployeesFromDatabase: (callback) =>
+    ipcRenderer.on("get-EmployeeAll", (event, data) => {
       callback(data);
     }),
 });
