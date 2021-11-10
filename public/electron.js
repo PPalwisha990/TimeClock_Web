@@ -1,5 +1,5 @@
 const path = require("path");
-
+require("../src/message-controller/main");
 const { app, BrowserWindow } = require("electron");
 const isDev = require("electron-is-dev");
 
@@ -9,7 +9,10 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true,
+      preload: isDev
+        ? path.join(app.getAppPath(), "./public/preload.js") // Loading it from the public folder for dev
+        : path.join(app.getAppPath(), "./build/preload.js"),
+      contextIsolation: true,
     },
   });
 
@@ -40,8 +43,17 @@ app.on("window-all-closed", () => {
   }
 });
 
+// Activating the app
 app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
+  }
+});
+
+// Logging any exceptions
+process.on("uncaughtException", (error) => {
+  console.log(`Exception: ${error}`);
+  if (process.platform !== "darwin") {
+    app.quit();
   }
 });

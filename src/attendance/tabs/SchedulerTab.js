@@ -1,21 +1,54 @@
-import { Empty } from "antd";
 import { useState } from "react";
 import { createUseStyles } from "react-jss";
-import Header from "../../componnets/Header";
 
 const SchedulerTab = ({ navigation, route }) => {
-  const [empty, setEmpty] = useState(true);
-  const styles = useStyle();
+  //const [empty, setEmpty] = useState(true);
+  const [message, setMessage] = useState("");
+  const [responses, setResponses] = useState([]);
+  //const styles = useStyle();
+
+  const sendMsg = async (msg) => {
+    let response = await window.api.testInvoke(msg);
+    console.log("Response==", response);
+  };
+
   return (
-    <div className={styles.container}>
-      <Header title="Schedules" />
-      {empty ? (
-        <div className={styles.img}>
-          <Empty description={"No Schedules"} imageStyle={{ height: 200 }} />
-        </div>
-      ) : null}
+    <div>
+      <header className="App-header">
+        <h1>Standalone application with Electron, React, and SQLite stack.</h1>
+      </header>
+      <article>
+        <p>
+          Say <i>ping</i> to the main process.
+        </p>
+        <input
+          type="text"
+          value={message}
+          onChange={({ target: { value } }) => setMessage(value)}
+        />
+        <button type="button" onClick={() => sendMsg(message)}>
+          Send
+        </button>
+        <br />
+        <p>Main process responses:</p>
+        <br />
+        <pre>
+          {(responses && responses.join("\n")) ||
+            "the main process seems quiet!"}
+        </pre>
+      </article>
     </div>
   );
+  // return (
+  //   <div className={styles.container}>
+  //     <Header title="Schedules" />
+  //     {empty ? (
+  //       <div className={styles.img}>
+  //         <Empty description={"No Schedules"} imageStyle={{ height: 200 }} />
+  //       </div>
+  //     ) : null}
+  //   </div>
+  // );
 };
 
 const useStyle = createUseStyles({

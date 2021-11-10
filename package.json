@@ -15,6 +15,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "antd": "^4.16.11",
+    "electron-rebuild": "^3.2.5",
     "google-map-react": "^2.1.10",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -26,6 +27,7 @@
     "react-scripts": "4.0.3",
     "react-toastify": "^8.0.2",
     "react-webcam": "^6.0.0",
+    "sqlite3": "^5.0.2",
     "superagent": "^6.1.0",
     "web-vitals": "^1.1.2"
   },
@@ -36,7 +38,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
-    "electron": "wait-on tcp:3000 && electron ."
+    "electron": "wait-on tcp:3000 && electron .",
+    "rebuild": "electron-rebuild -f -w sqlite3"
   },
   "eslintConfig": {
     "extends": [
@@ -58,7 +61,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.2.1",
-    "electron": "^15.0.0",
+    "electron": "^15.3.1",
     "electron-is-dev": "^2.0.0",
     "wait-on": "^6.0.0"
   }
