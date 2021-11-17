@@ -3,6 +3,8 @@ require("../src/message-controller/main");
 const { app, BrowserWindow } = require("electron");
 const isDev = require("electron-is-dev");
 
+require("../src/server");
+
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
@@ -13,6 +15,7 @@ function createWindow() {
         ? path.join(app.getAppPath(), "./public/preload.js") // Loading it from the public folder for dev
         : path.join(app.getAppPath(), "./build/preload.js"),
       contextIsolation: true,
+      nodeIntegration: true,
     },
   });
 

@@ -38,6 +38,7 @@ const executeMultipleQueries = (queries, params, resolve, reject) => {
         console.log(err);
         reject(err);
       } else {
+        console.log("Row Inserted!");
         resolve();
       }
     });
@@ -109,9 +110,110 @@ const dropTable = (tableName) => {
     }
   });
 };
+const selectAllQuery = (query, params, resolve, reject) => {
+  const db = this.open();
+  console.log("Query: " + query);
+  db.all(query, params, (err, rows) => {
+    if (err) {
+      reject(err);
+    }
+    console.log("Rows are", rows);
+    resolve(rows);
+  });
+};
+const selectQuery = (query, params, resolve, reject) => {
+  const db = this.open();
+  console.log("Query: " + query);
+  db.get(query, params, (err, row) => {
+    if (err) {
+      reject(err);
+    }
+    console.log("Number of row", row.id);
+    resolve(row);
+  });
+};
+const select = (
+  tableName,
+  columns,
+  condition,
+  pagination,
+  perPageNum,
+  orderBy
+) => {
+  return new Promise((resolve, reject) => {
+    if (!Array.isArray(columns) && columns !== "*") {
+      throw new Error(
+        `Parameter columns expects Array or '*' but ${Object.prototype.toString.call(
+          columns
+        )}`
+      );
+    }
+    try {
+      let query;
+      if (columns === "*") {
+        if (condition && condition !== {} && typeof condition === "object") {
+          const conditionKeys = Object.keys(condition);
+          query = conditionKeys.reduce(
+            (sqlSegment, conditionKey, index, arr) =>
+              `${sqlSegment} ${conditionKey}=${
+                typeof condition[conditionKey] !== "number"
+                  ? `'${condition[conditionKey]}'`
+                  : condition[conditionKey]
+              } ${index + 1 !== arr.length ? "AND" : ""}`,
+            `SELECT * FROM ${tableName} WHERE`
+          );
+        } else {
+          query = `SELECT * FROM ${tableName}`;
+        }
+      } else {
+        query = columns.reduce(
+          (sqlSegment, column, index, arr) =>
+            `${sqlSegment} ${column} ${index + 1 !== arr.length ? "," : ""}`,
+          "SELECT"
+        );
+        if (condition && condition !== {} && typeof condition === "object") {
+          const conditionKeys = Object.keys(condition);
+          query += conditionKeys.reduce(
+            (sqlSegment, conditionKey, index, arr) =>
+              `${sqlSegment} ${conditionKey}=${
+                typeof condition[conditionKey] !== "number"
+                  ? `'${condition[conditionKey]}'`
+                  : condition[conditionKey]
+              } ${index + 1 !== arr.length ? "AND" : ""}`,
+            ` FROM ${tableName} WHERE`
+          );
+        } else {
+          query += ` FROM ${tableName}`;
+        }
+      }
+
+      if (orderBy) {
+        query += ` ORDER BY ${orderBy}`;
+      }
+
+      if (pagination && perPageNum) {
+        const limit = pagination * perPageNum;
+        const offset =
+          perPageNum * (pagination - 1) > 0 ? perPageNum * (pagination - 1) : 0;
+        query += ` limit ${limit} offset ${offset};`;
+      } else {
+        query += ";";
+      }
+      if (columns === "*") {
+        selectAllQuery(query, null, resolve, reject);
+      } else {
+        selectQuery(query, null, resolve, reject);
+      }
+    } catch (error) {
+      reject(error);
+      console.error(error);
+    }
+  });
+};
 
 module.exports = {
   createTable,
   insert,
   dropTable,
+  select,
 };

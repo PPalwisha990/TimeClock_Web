@@ -12,16 +12,20 @@ on — You receive data from the backend event.sender and process that with the 
 
 const { ipcRenderer, contextBridge } = require("electron");
 
+const getDataFromDb = (callback) => {
+  ipcRenderer.send("employeesAll", "");
+  ipcRenderer.on("get-EmployeeAll", (event, data) => {
+    callback(data);
+  });
+};
+
 contextBridge.exposeInMainWorld("api", {
   // Invoke Methods
 
   testInvoke: (args) => ipcRenderer.invoke("test-invoke", args),
-  refreshTables: (args) =>
-    ipcRenderer.send("create-databse-tables", args).then((result) => {
-      return result;
-    }),
+  refreshTables: (args) => ipcRenderer.send("create-databse-tables", args),
   // Send Methods
-  getEmployeesDb: (args) => ipcRenderer.send("employeesAll", args),
+  getEmployees: (args) => getDataFromDb(),
   // Receive Methods
   getEmployeesFromDatabase: (callback) =>
     ipcRenderer.on("get-EmployeeAll", (event, data) => {

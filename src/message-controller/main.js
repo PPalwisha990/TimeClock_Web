@@ -1,13 +1,15 @@
 const { ipcMain } = require("electron");
 const { onRefresh } = require("../db/database");
+const { getAllEmployees } = require("../db/employeesTable");
 
 ipcMain.handle("test-invoke", (event, args) => {
   return args;
 });
 
 ipcMain.on("create-databse-tables", async (event, arg) => {
-  let response = onRefresh(arg);
-  return response;
+  await onRefresh(arg);
+  let response = await getAllEmployees();
+  event.sender.send("get-EmployeeAll", response);
 });
 
 ipcMain.on("asynchronous-message", (event, arg) => {

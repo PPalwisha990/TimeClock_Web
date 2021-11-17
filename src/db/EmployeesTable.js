@@ -108,23 +108,24 @@ const insert = async (items) => {
   items.map((item, ind) => {
     console.log("Item===", item, "== index", ind);
     let obj = {};
-    obj[COLUMNS.EMPLOYEE_ID] = item[0];
-    obj[COLUMNS.EMPLOYEE_NAME] = item[1];
-    obj[COLUMNS.USERNAME] = item[2];
-    obj[COLUMNS.MOBILE_NUMBER] = item[3];
-    obj[COLUMNS.OFFICE_NUMBER] = item[4];
-    obj[COLUMNS.EMAIL_ADDRESS] = item[5];
-    obj[COLUMNS.EMPLOYEE_DESIGNATION_ID] = item[6];
-    obj[COLUMNS.DEPARTMENT_ID] = item[7];
-    obj[COLUMNS.STATION_ID] = item[8];
-    obj[COLUMNS.COMPANY_ID] = item[9];
-    obj[COLUMNS.REPORTS_TO] = item[10];
-    obj[COLUMNS.ACCESS_CODE] = item[19];
-    obj[COLUMNS.IOS_ID] = item[20];
-    obj[COLUMNS.ANDROID_ID] = item[21];
-    obj[COLUMNS.EMPLOYEE_STATUS] = item[24];
-    obj[COLUMNS.PHOTO] = item[14];
-    obj[COLUMNS.REPORTS_TO_ROLE] = item[27];
+    obj[COLUMNS.EMPLOYEE_ID] = item.employeeId;
+    obj[COLUMNS.EMPLOYEE_NAME] = item.employeeName;
+    obj[COLUMNS.USERNAME] = item.userName;
+    obj[COLUMNS.MOBILE_NUMBER] = item.mobile;
+    obj[COLUMNS.OFFICE_NUMBER] = item.office;
+    obj[COLUMNS.EMAIL_ADDRESS] = item.email;
+    obj[COLUMNS.EMPLOYEE_DESIGNATION_ID] = item.dId;
+    obj[COLUMNS.DEPARTMENT_ID] = item.ddId;
+    obj[COLUMNS.STATION_ID] = item.sId;
+    obj[COLUMNS.COMPANY_ID] = item.cId;
+    obj[COLUMNS.REPORTS_TO] = item.reportsTo;
+    obj[COLUMNS.ACCESS_CODE] = item.accessCode;
+    obj[COLUMNS.IOS_ID] = item.ios;
+    obj[COLUMNS.ANDROID_ID] = item.android;
+    obj[COLUMNS.EMPLOYEE_STATUS] = item.status;
+    obj[COLUMNS.PHOTO] = item.photo;
+    obj[COLUMNS.REPORTS_TO_ROLE] = item.reportsToRole;
+    obj[COLUMNS.WORK_SHIFT_ID] = item.wId;
 
     data.push(obj);
   });
@@ -132,4 +133,15 @@ const insert = async (items) => {
   return sqliteHelper.insert(TABLE_NAME, data);
 };
 
-module.exports = { insert, createTable, dropTable };
+const getAllEmployees = async () => {
+  return sqliteHelper.select(
+    TABLE_NAME,
+    "*",
+    null,
+    null,
+    null,
+    COLUMNS.EMPLOYEE_NAME + " COLLATE NOCASE"
+  );
+};
+
+module.exports = { insert, createTable, dropTable, getAllEmployees };

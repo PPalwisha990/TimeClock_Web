@@ -8,27 +8,37 @@ const SchedulerTab = ({ navigation, route }) => {
   //const styles = useStyle();
 
   let employee = [
-    "36",
-    "palwisha",
-    "palwisha",
-    "090078601",
-    "778963",
-    "palwish@webhr.co",
-    "2",
-    "4",
-    "33",
-    "34",
-    "7",
-    "female",
-    "active",
-    "22-08-02",
-    "adeujkh",
-    "44",
+    {
+      employeeId: 36,
+      employeeName: "palwisha",
+      userName: "palwisha",
+      mobile: "090078601",
+      office: "778963",
+      email: "palwish@webhr.co",
+      sId: 2,
+      cId: 4,
+      dId: 33,
+      ddId: 34,
+      reportsTo: 7,
+      accessCode: 5,
+      ios: "121",
+      status: 0,
+      android: "3323",
+      photo: "adeujkh",
+      reportsToRole: "0",
+      wId: 19,
+    },
   ];
 
   const sendMsg = async (msg) => {
     let response = await window.api.refreshTables(employee);
     console.log("Response==", response);
+  };
+
+  const getEmployees = async () => {
+    await window.api.getEmployeesFromDatabase((data) =>
+      console.log("data==", data)
+    );
   };
 
   return (
@@ -49,6 +59,9 @@ const SchedulerTab = ({ navigation, route }) => {
           Send
         </button>
         <br />
+        <button type="button" onClick={() => getEmployees()}>
+          Get
+        </button>
         <p>Main process responses:</p>
         <br />
         <pre>
