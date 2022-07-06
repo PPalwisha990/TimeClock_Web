@@ -9,25 +9,27 @@ const SchedulerTab = ({ navigation, route }) => {
   return (
     <div className={styles.container}>
       <Header title="Schedules" />
-      {empty ? (
-        <div className={styles.img}>
-          <Empty description={"No Schedules"} imageStyle={{ height: 200 }} />
-        </div>
-      ) : null}
+      <div className={styles.img}>
+        {empty ? (
+          <div>
+            <Empty description={"No Schedules"} imageStyle={{ height: 200 }} />
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };
 
 const useStyle = createUseStyles({
-  img: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: 100,
-    marginBottom: 100,
-  },
   container: {
     height: "100%",
+  },
+  img: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+    paddingBottom: 100,
   },
   message: {
     color: "#778392",

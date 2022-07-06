@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { createUseStyles } from "react-jss";
-import Avatar from "../../componnets/Avatar";
-import Field from "../../componnets/Field";
-import InfoBanner from "../../componnets/InfoBanner";
-import { Picker } from "../../componnets/Picker";
-import { TextInput } from "../../componnets/TextInput";
-import AttendanceButtonGenerator from "./AttendanceButtonGenerator";
 import Map from "./Map";
-import Schedules from "./Schedules";
 import WebCam from "./WebCam";
+import Schedules from "./Schedules";
+import Field from "../../componnets/Field";
+import Avatar from "../../componnets/Avatar";
+import InfoBanner from "../../componnets/InfoBanner";
+import AttendanceButtonGenerator from "./AttendanceButtonGenerator";
+import { Input } from "antd";
+import { createUseStyles } from "react-jss";
+import { Picker } from "../../componnets/Picker";
+
+const { TextArea } = Input;
 
 const AttendanceHomeTab = ({ employee }) => {
   const [buttonsLoading, setButtonsLoading] = useState(false);
@@ -96,10 +98,11 @@ const AttendanceHomeTab = ({ employee }) => {
             </Field>
           ) : null}
           <Field icon="sticky-note" iconColor="#6254DB" name="Notes">
-            <TextInput
+            <TextArea
+              rows={5}
               //onChange={}
               placeholder={"Add notes here"}
-              style={styles.textarea}
+              className={styles.textarea}
             />
           </Field>
         </div>
@@ -177,8 +180,7 @@ const useStyle = createUseStyles({
     marginLeft: 20,
   },
   textarea: {
-    borderWidth: 0,
-    right: 25,
+    border: "none",
   },
 });
 
