@@ -1,5 +1,6 @@
 import { createUseStyles } from "react-jss";
 import { CardColors } from "./CardColors";
+
 export const ScheduleCard = ({ data }) => {
   const styles = useStyle();
   return (
@@ -17,13 +18,8 @@ export const ScheduleCard = ({ data }) => {
         <span className={styles.status}>{data.title}</span>
       </div>
       <div className={styles.detailContainer}>
-        {/* <span className={styles.time}>{data.StartTime + " - "}</span> */}
         <span className={styles.time}>{data.time}</span>
-      </div>
-      <div className={styles.project}>
         <span className={styles.projectText}>{"WebHR"}</span>
-      </div>
-      <div className={styles.mealBreak}>
         <span className={styles.mealBreakText}>
           {"Lunch Break: " + data.break}
         </span>
@@ -36,12 +32,7 @@ const useStyle = createUseStyles({
   cardContainer: {
     width: 250,
     borderRadius: 5,
-    paddingTop: 10,
-    paddingLeft: 10,
-    paddingRight: 20,
-    marginRight: 10,
-    marginTop: 10,
-    marginBottom: 10,
+    padding: 15,
   },
   content: {
     width: "100%",
@@ -59,34 +50,18 @@ const useStyle = createUseStyles({
   },
   detailContainer: {
     display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingLeft: 2,
-    paddingRight: 2,
-    paddingTop: 4,
-    paddingBottom: 4,
+    flexDirection: "column",
+    paddingLeft: 10,
+    paddingTop: 5,
   },
   time: {
     fontSize: 14,
     color: "#778392",
     fontWeight: "bold",
   },
-  project: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 2,
-  },
   projectText: {
     fontSize: 14,
     color: "#778392",
-  },
-  mealBreak: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 2,
-    marginVertical: 8,
   },
   mealBreakText: {
     fontSize: 14,

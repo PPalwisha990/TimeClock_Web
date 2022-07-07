@@ -53,7 +53,13 @@ const Schedules = () => {
         <List
           dataArray={data}
           horizontal={true}
-          renderItems={(item, index) => <ScheduleCard data={item} />}
+          renderItems={(item, index) => {
+            return (
+              <div style={{ marginRight: 20, marginTop: 5 }}>
+                <ScheduleCard data={item} />
+              </div>
+            );
+          }}
           showIconMore={true}
           onIconPress={onIconPress}
         />

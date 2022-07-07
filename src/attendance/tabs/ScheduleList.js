@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import Header from "../../componnets/Header";
 import { ScheduleCard } from "../../componnets/ScheduleCard";
 import Screen from "../../componnets/Screen";
+import { Row, Col } from "react-bootstrap";
 
 const ScheduleList = () => {
   const styles = useStyle();
@@ -13,6 +14,8 @@ const ScheduleList = () => {
   const onBackPress = () => {
     history.goBack();
   };
+
+  console.log("location.state.data", location?.state?.data);
   return (
     <Screen
       content={
@@ -22,12 +25,22 @@ const ScheduleList = () => {
             onBackPress={onBackPress}
             showBack={true}
           />
-          <List
+          {/* <List
             className={styles.content}
             grid={{ gutter: 10, column: 4 }}
             dataSource={location.state.data}
-            renderItem={(item) => <ScheduleCard data={item} />}
-          />
+            renderItem={(item) =>}
+          /> */}
+
+          <Row style={{ padding: 20 }}>
+            {location?.state?.data?.map((item, index) => {
+              return (
+                <Col className="p-2" sm={6} md={4} xl={2}>
+                  <ScheduleCard data={item} />
+                </Col>
+              );
+            })}
+          </Row>
         </div>
       }
     />
