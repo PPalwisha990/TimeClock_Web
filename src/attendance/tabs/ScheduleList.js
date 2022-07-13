@@ -35,7 +35,7 @@ const ScheduleList = () => {
           <Row style={{ padding: 20 }}>
             {location?.state?.data?.map((item, index) => {
               return (
-                <Col className="p-2" sm={6} md={4} xl={2}>
+                <Col key={index} className="p-2" sm={6} md={4} xl={2}>
                   <ScheduleCard data={item} />
                 </Col>
               );

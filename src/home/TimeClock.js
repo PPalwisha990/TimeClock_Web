@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { createUseStyles } from "react-jss";
-import { useHistory } from "react-router";
-import NumPad from "../componnets/NumPad";
 import AnalogClock from "./AnalogClock";
+import NumPad from "../componnets/NumPad";
+import { useHistory } from "react-router";
 import { Row, Col } from "react-bootstrap";
+import { createUseStyles } from "react-jss";
 
 const videoConstraints = {
   width: 1280,
@@ -25,7 +25,11 @@ const TimeClock = ({ onAccessCodeChange, clearAccessCode }) => {
   return (
     <div className={classes.main}>
       <Row>
-        <Col className="d-flex justify-content-center" lg={6}>
+        <Col
+          className="d-flex justify-content-center align-items-center
+          "
+          lg={6}
+        >
           <NumPad
             onSubmit={onSubmit}
             accessCode={accessCode}
@@ -33,7 +37,10 @@ const TimeClock = ({ onAccessCodeChange, clearAccessCode }) => {
             onClear={clearAccessCode}
           />
         </Col>
-        <Col className="d-flex justify-content-center" lg={6}>
+        <Col
+          className="d-flex justify-content-center align-items-center"
+          lg={6}
+        >
           <AnalogClock />
         </Col>
       </Row>
@@ -45,6 +52,11 @@ const useStyle = createUseStyles({
   main: {
     height: "100%",
     marginTop: 150,
+  },
+  "@media screen and (max-width: 992px)": {
+    main: {
+      marginTop: 25,
+    },
   },
 });
 

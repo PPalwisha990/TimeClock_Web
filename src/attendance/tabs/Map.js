@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
 import GoogleMapReact from "google-map-react";
-import { useState } from "react";
 import { createUseStyles } from "react-jss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const LocationPin = ({ text }) => (
   <div>
@@ -33,8 +33,8 @@ const Map = () => {
 
 const useStyle = createUseStyles({
   map: {
-    height: "250px",
-    width: "560px",
+    height: "270px",
+    width: "100%",
     border: "solid 1px #d8d8d8",
   },
 });
