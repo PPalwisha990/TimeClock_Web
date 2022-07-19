@@ -1,10 +1,10 @@
-import moment from "moment";
 import React from "react";
-import { createUseStyles } from "react-jss";
+import moment from "moment";
+import NoSchedule from "../../images/NoSchedule.svg";
 import { useHistory } from "react-router";
+import { createUseStyles } from "react-jss";
 import { List } from "../../componnets/List";
 import { ScheduleCard } from "../../componnets/ScheduleCard";
-import NoSchedule from "../../images/NoSchedule.svg";
 
 const data = [
   {
@@ -53,7 +53,13 @@ const Schedules = () => {
         <List
           dataArray={data}
           horizontal={true}
-          renderItems={(item, index) => <ScheduleCard data={item} />}
+          renderItems={(item) => {
+            return (
+              <div style={{ marginRight: 20, marginTop: 5 }}>
+                <ScheduleCard data={item} />
+              </div>
+            );
+          }}
           showIconMore={true}
           onIconPress={onIconPress}
         />

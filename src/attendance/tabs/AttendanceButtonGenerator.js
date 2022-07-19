@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AttendanceTypes from "../AttendanceTypes";
 import { createUseStyles } from "react-jss";
 import {
   AdditionalInButton,
@@ -11,7 +12,6 @@ import {
   SignOutButton,
 } from "../../componnets/AttendanceButton";
 import { Loader } from "../../componnets/Loader";
-import AttendanceTypes from "../AttendanceTypes";
 
 const useStyle = createUseStyles({
   row: {
@@ -101,7 +101,6 @@ const AttendanceButtonGenerator = ({
 
   useEffect(() => {
     checkButtons();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {

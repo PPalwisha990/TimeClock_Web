@@ -33,8 +33,16 @@ const useStyle = createUseStyles({
     flexDirection: "row",
   },
   btnStyle: {
-    backgroundColor: "#4b94cf",
-    borderColor: "#4b94cf",
+    backgroundColor: "#2B81C7",
+    borderColor: "#2B81C7",
+    "&:hover": {
+      opacity: 0.2,
+    },
+    "&:focus": {
+      opacity: 0.7,
+      backgroundColor: "#2B81C7",
+      borderColor: "#2B81C7",
+    },
   },
 });
 

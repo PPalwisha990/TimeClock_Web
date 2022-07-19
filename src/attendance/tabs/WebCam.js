@@ -42,10 +42,10 @@ const WebCam = ({ onImageCaptured }) => {
 
       <Webcam
         audio={false}
-        height={520}
+        height={"100%"}
         ref={webcamRef}
         screenshotFormat="image/png"
-        width={1200}
+        width={"100%"}
         videoConstraints={videoConstraints}
       />
     </div>
@@ -68,10 +68,8 @@ const useStyle = createUseStyles({
   },
   layer: {
     position: "absolute",
-    width: "100%",
-    height: "100%",
-    left: 600,
-    top: 450,
+    left: 960,
+    top: 730,
   },
 });
 

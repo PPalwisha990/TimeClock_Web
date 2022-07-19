@@ -1,9 +1,9 @@
-import { Redirect, Route, Switch } from "react-router-dom";
+import Home from "../home";
+import Login from "../login";
+import useAuth from "../hooks/useAuth";
 import Attendance from "../attendance/Attendance";
 import ScheduleList from "../attendance/tabs/ScheduleList";
-import Home from "../home";
-import useAuth from "../hooks/useAuth";
-import Login from "../login";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 const Routes = () => {
   const { user } = useAuth();

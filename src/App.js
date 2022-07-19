@@ -1,5 +1,6 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { fal } from "@fortawesome/pro-light-svg-icons";
 import "./App.css";
 import Routing from "./routes/Routing";

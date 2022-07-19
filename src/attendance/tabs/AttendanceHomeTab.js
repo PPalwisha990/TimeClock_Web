@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { createUseStyles } from "react-jss";
-import Avatar from "../../componnets/Avatar";
-import Field from "../../componnets/Field";
-import InfoBanner from "../../componnets/InfoBanner";
-import { Picker } from "../../componnets/Picker";
-import { TextInput } from "../../componnets/TextInput";
-import AttendanceButtonGenerator from "./AttendanceButtonGenerator";
 import Map from "./Map";
-import Schedules from "./Schedules";
 import WebCam from "./WebCam";
+import Schedules from "./Schedules";
+import Field from "../../componnets/Field";
+import Avatar from "../../componnets/Avatar";
+import InfoBanner from "../../componnets/InfoBanner";
+import AttendanceButtonGenerator from "./AttendanceButtonGenerator";
+import { Input } from "antd";
+import { Col, Row } from "react-bootstrap";
+import { createUseStyles } from "react-jss";
+import { Picker } from "../../componnets/Picker";
+
+const { TextArea } = Input;
 
 const AttendanceHomeTab = ({ employee }) => {
   const [buttonsLoading, setButtonsLoading] = useState(false);
@@ -45,82 +48,91 @@ const AttendanceHomeTab = ({ employee }) => {
     return <WebCam visible={showCamera} onImageCaptured={onImageCaptured} />;
   }
   return (
-    <div className={styles.container}>
-      <div className={styles.coulumn}>
-        <div className={styles.row}>
-          <div>
-            <Avatar
-              size="large"
-              name={employee.employeeName}
-              photo={employee.photo}
-            />
-          </div>
-          <div className={styles.userInfo}>
-            <span className={styles.employeeName}>{employee.employeeName}</span>
-            <span className={styles.designation}>
-              {employee.emailAddress != ""
-                ? employee.emailAddress
-                : employee.employeeName}
-            </span>
-          </div>
-        </div>
-        {signInTime != "" ? (
-          <div className={styles.signInTimeContainer}>
-            <span className={styles.signInTime}>{signInTimeMessage}</span>
-          </div>
-        ) : null}
-        {canMarkAttendance ? (
-          <AttendanceButtonGenerator
-            employeeId={employee?.employeeId}
-            loading={buttonsLoading}
-            lastAttendanceType={1}
-            onButtonPress={onButtonPress}
-            multipleAttendance={multipleAttendance}
-            limitAttendanceToSignInSignOut={false}
-          />
-        ) : (
-          <InfoBanner
-            text={"No Schedule added! Cannot mark Attendance without Schedule"}
-          />
-        )}
-        <div style={styles.fields}>
-          {includeFields ? (
-            <Field icon="building" iconColor="#EB5757" name="Station">
-              <Picker title={"search station"} key={"stations"} />
-            </Field>
-          ) : null}
+    <>
+      <div className={styles.container}>
+        <Row>
+          <Col lg={6}>
+            <div className={styles.row}>
+              <div>
+                <Avatar
+                  size="large"
+                  name={employee.employeeName}
+                  photo={employee.photo}
+                />
+              </div>
+              <div className={styles.userInfo}>
+                <span className={styles.employeeName}>
+                  {employee.employeeName}
+                </span>
+                <span className={styles.designation}>
+                  {employee.emailAddress != ""
+                    ? employee.emailAddress
+                    : employee.employeeName}
+                </span>
+              </div>
+            </div>
+            <div>
+              {signInTime != "" ? (
+                <div className={styles.signInTimeContainer}>
+                  <span className={styles.signInTime}>{signInTimeMessage}</span>
+                </div>
+              ) : null}
+              {canMarkAttendance ? (
+                <AttendanceButtonGenerator
+                  employeeId={employee?.employeeId}
+                  loading={buttonsLoading}
+                  lastAttendanceType={1}
+                  onButtonPress={onButtonPress}
+                  multipleAttendance={multipleAttendance}
+                  limitAttendanceToSignInSignOut={false}
+                />
+              ) : (
+                <InfoBanner
+                  text={
+                    "No Schedule added! Cannot mark Attendance without Schedule"
+                  }
+                />
+              )}
+            </div>
+            <div style={styles.fields}>
+              {includeFields ? (
+                <Field icon="building" iconColor="#EB5757" name="Station">
+                  <Picker title={"search station"} key={"stations"} />
+                </Field>
+              ) : null}
 
-          {includeFields ? (
-            <Field icon="tasks" iconColor="#27AE60" name="Project">
-              <Picker title={"search project"} key={"projects"} />
-            </Field>
-          ) : null}
-          <Field icon="sticky-note" iconColor="#6254DB" name="Notes">
-            <TextInput
-              //onChange={}
-              placeholder={"Add notes here"}
-              style={styles.textarea}
-            />
-          </Field>
-        </div>
+              {includeFields ? (
+                <Field icon="tasks" iconColor="#27AE60" name="Project">
+                  <Picker title={"search project"} key={"projects"} />
+                </Field>
+              ) : null}
+              <Field icon="sticky-note" iconColor="#6254DB" name="Notes">
+                <TextArea
+                  rows={5}
+                  //onChange={}
+                  placeholder={"Add notes here"}
+                  className={styles.textarea}
+                />
+              </Field>
+            </div>
+          </Col>
+          <Col lg={6}>
+            <div className={styles.secondColumn}>
+              <div className={styles.scheduleContainer}>
+                <Schedules />
+              </div>
+              <div className={styles.mapContainer}>
+                <Map />
+              </div>
+            </div>
+          </Col>
+        </Row>
       </div>
-      <div className={styles.coulumn2}>
-        <div className={styles.scheduleContainer}>
-          <Schedules />
-        </div>
-        <div className={styles.mapContainer}>
-          <Map />
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
 const useStyle = createUseStyles({
-  container: {
-    display: "flex",
-    flexDirection: "row",
-  },
   row: {
     display: "flex",
     flexDirection: "row",
@@ -150,8 +162,9 @@ const useStyle = createUseStyles({
     color: "#1A1A1A",
     fontSize: 16,
     alignSelf: "center",
-    marginTop: 10,
+    marginTop: 20,
     marginBottom: 10,
+    marginLeft: 20,
   },
   coulumn: {
     width: "50%",
@@ -167,8 +180,11 @@ const useStyle = createUseStyles({
     alignSelf: "center",
   },
   scheduleContainer: {
-    paddingTop: 20,
-    paddingBottom: 10,
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  secondColumn: {
+    width: 615,
   },
   mapContainer: {
     alignItems: "center",
@@ -177,8 +193,12 @@ const useStyle = createUseStyles({
     marginLeft: 20,
   },
   textarea: {
-    borderWidth: 0,
-    right: 25,
+    border: "none",
+  },
+  "@media screen and (max-width: 992px)": {
+    secondColumn: {
+      width: "100%",
+    },
   },
 });
 

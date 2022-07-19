@@ -15,7 +15,6 @@ const useStyle = createUseStyles({
   details: {
     display: "flex",
     flexDirection: "column",
-    marginLeft: 30,
     paddingBottom: 5,
   },
   row: {

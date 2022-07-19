@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { MainHeader } from "../componnets/MainHeader";
-import Screen from "../componnets/Screen";
-import Toast from "../componnets/Toast";
-import EmployeesList from "./EmployeeList";
+import React, { useEffect, useState } from "react";
 import TimeClock from "./TimeClock";
+import Toast from "../componnets/Toast";
+import Screen from "../componnets/Screen";
+import EmployeesList from "./EmployeeList";
+import { MainHeader } from "../componnets/MainHeader";
 
 const Home = () => {
   const [settings, setSettings] = useState(false);

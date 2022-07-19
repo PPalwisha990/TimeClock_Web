@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { createUseStyles } from "react-jss";
-import { useHistory } from "react-router";
-import NumPad from "../componnets/NumPad";
 import AnalogClock from "./AnalogClock";
+import NumPad from "../componnets/NumPad";
+import { useHistory } from "react-router";
+import { Row, Col } from "react-bootstrap";
+import { createUseStyles } from "react-jss";
 
 const videoConstraints = {
   width: 1280,
@@ -23,49 +24,39 @@ const TimeClock = ({ onAccessCodeChange, clearAccessCode }) => {
 
   return (
     <div className={classes.main}>
-      <div className={classes.numpad}>
-        <NumPad
-          onSubmit={onSubmit}
-          accessCode={accessCode}
-          onAccessCodeChange={onAccessCodeChange}
-          onClear={clearAccessCode}
-        />
-      </div>
-      <div className={classes.clock}>
-        <AnalogClock />
-      </div>
+      <Row>
+        <Col
+          className="d-flex justify-content-center align-items-center
+          "
+          lg={6}
+        >
+          <NumPad
+            onSubmit={onSubmit}
+            accessCode={accessCode}
+            onAccessCodeChange={onAccessCodeChange}
+            onClear={clearAccessCode}
+          />
+        </Col>
+        <Col
+          className="d-flex justify-content-center align-items-center"
+          lg={6}
+        >
+          <AnalogClock />
+        </Col>
+      </Row>
     </div>
   );
 };
 
 const useStyle = createUseStyles({
   main: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    // alignItems: "center",
-    marginTop: 50,
-    marginBottom: 50,
-  },
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  numpad: {
-    width: "50%",
     height: "100%",
-    justifyContent: "center",
-    display: "flex",
-    alignItems: "center",
+    marginTop: 150,
   },
-  clock: {
-    width: "50%",
-    height: "100%",
-    justifyContent: "center",
-    display: "flex",
-    alignItems: "center",
-    marginTop: 60,
+  "@media screen and (max-width: 992px)": {
+    main: {
+      marginTop: 25,
+    },
   },
 });
 

@@ -52,7 +52,6 @@ const AnalogClock = ({
 
   return (
     <div>
-      {/* <Clock /> */}
       <div className={classes.clock}>
         <ClockNew />
       </div>
