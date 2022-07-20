@@ -1,4 +1,4 @@
-export const Theme = {
+export const theme = {
   primaryBackground: "#FAFAFB",
   secondaryBackground: "#FAFAFB",
   primaryText: "#3F3D56",
@@ -14,6 +14,7 @@ export const Theme = {
   postHeaderBackground: "#FFFFFF",
   inputBackground: "#EEEEEE",
   cardBackground: "#FFFFFF",
+  base: "#2B81C7",
   iconColors: [
     "#56CCF2",
     "#FF8400",
@@ -26,4 +27,5 @@ export const Theme = {
   labelColors: ["#2B81C7", "#FF8400", "#EB5757", "#27AE60", "#4E7DFE"],
   transparentBackground: "rgba(255,255,255,0.9)",
   progressBackground: "#FAFAFB",
+  lightText: "#A9A9A9",
 };

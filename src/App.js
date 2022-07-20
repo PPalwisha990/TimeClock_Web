@@ -1,27 +1,22 @@
+import { library } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { fal } from "@fortawesome/pro-light-svg-icons";
 import "./App.css";
-import {
-  PasswordInput,
-  SearchInput,
-  Textarea,
-  TextInput,
-} from "./componnets/TextInput";
+import Routing from "./routes/Routing";
 
 const App = () => {
-  const name = "Joseph";
   return (
-    <div className="App" style={{ padding: "20px" }}>
-      <h1>Hello, {name}</h1>
-      <TextInput
-        placeholder={"organization code"}
-        suffix={".co"}
-        prefix={"http:\\"}
-      />
-
-      <PasswordInput />
-      <Textarea />
-      <SearchInput />
+    <div style={{ height: "100%" }}>
+      <Routing />
     </div>
   );
 };
+
+// const iconList = Object.keys(Icons)
+//   .filter((key) => key !== "fal" && key !== "prefix")
+//   .map((icon) => Icons[icon]);
+
+library.add(fal);
 
 export default App;
